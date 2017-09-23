@@ -17,37 +17,15 @@ public class ResourseServerWindow {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
+	
 	/**
-	 * Launch the application.
+	 * @wbp.parser.entryPoint
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ResourseServerWindow window = new ResourseServerWindow();
-					window.frmFillRequiredValues.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ResourseServerWindow() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public void initialize() {
 		frmFillRequiredValues = new JFrame();
 		frmFillRequiredValues.setResizable(false);
 		frmFillRequiredValues.setTitle("Fill required values");
-		frmFillRequiredValues.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Dropbox\\pictures\\15.png"));
+	
 		frmFillRequiredValues.setBackground(SystemColor.desktop);
 		frmFillRequiredValues.getContentPane().setLayout(null);
 		
@@ -86,5 +64,6 @@ public class ResourseServerWindow {
 		JButton btnOptions = new JButton("options");
 		btnOptions.setBounds(10, 187, 89, 23);
 		frmFillRequiredValues.getContentPane().add(btnOptions);
+		frmFillRequiredValues.setVisible(true);
 	}
 }
