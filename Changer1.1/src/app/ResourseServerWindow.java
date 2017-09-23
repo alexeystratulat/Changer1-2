@@ -18,6 +18,7 @@ public class ResourseServerWindow {
 	private JTextField textField_2;
 
 	
+	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
