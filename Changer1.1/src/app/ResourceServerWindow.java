@@ -6,27 +6,38 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.io.IOException;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 
-public class ResourseServerWindow {
+public class ResourceServerWindow {
 
 	private JFrame frmFillRequiredValues;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 
+	private String resFileName = "resources.ini";
+	private String mainProgramFolder = "C:\\Changer1.1";
 	
-	
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public void initialize() {
-		frmFillRequiredValues = new JFrame();
-
+		//
+		CreatingDirectory dir = new CreatingDirectory();
+		dir.createDir();
+		//
+		CreatingResourcesFiles resFile = new CreatingResourcesFiles(mainProgramFolder,resFileName);
+		try {
+			resFile.creatingFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		
+		frmFillRequiredValues = new JFrame();
 		
 		
 		frmFillRequiredValues.setBounds(100, 100, 209, 273);
