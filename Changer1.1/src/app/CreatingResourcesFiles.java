@@ -26,9 +26,9 @@ public class CreatingResourcesFiles {
 			 PrintWriter writer = new PrintWriter(folder+"\\"+file,
 			 "UTF-8");
 			 writer.println("[auth]");
-			 writer.println("IPaddres = ");
-			 writer.println("Username = ");
-			 writer.println("Password = ");
+			 writer.println("IPaddres = 192.192.192.192");
+			 writer.println("Username = Username");
+			 writer.println("Password = Password");
 			 
 			 
 			 
