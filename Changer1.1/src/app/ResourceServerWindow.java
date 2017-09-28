@@ -57,10 +57,9 @@ public class ResourceServerWindow {
 		resources = new Ini(new File(mainProgramFolder+"\\"+resFileName));
 		
 		
+		// WINDOW
 		
-		
-		frmFillRequiredValues = new JFrame();
-		
+		frmFillRequiredValues = new JFrame();	
 		
 		frmFillRequiredValues.setBounds(100, 100, 209, 273);
 		frmFillRequiredValues.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,9 +87,7 @@ public class ResourceServerWindow {
 		textField_1.setColumns(10);
 		textField_1.setBounds(10, 100, 181, 20);
 		frmFillRequiredValues.getContentPane().add(textField_1);
-		textField_1.setText(resources.get("auth", "Username"));
-		
-		
+		textField_1.setText(resources.get("auth", "Username"));			
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
