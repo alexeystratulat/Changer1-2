@@ -48,13 +48,13 @@ public class Connect {
 				sftpChannel.connect();
 				System.out.println(ipAddress.toString() + " SFTP Channel created.");
 				//
-				File file = new File("C:\\Changer1.1\\list.ini");
+				//File file = new File("C:\\Changer1.1\\list.ini");
 				
-				//File file = new File(pathForList);
+				File file = new File(pathForList);
 				file.createNewFile();
-				//sftpChannel.get(path, pathForList);
+				sftpChannel.get(path, pathForList);
 				//sftpChannel.get(path, "C:\\Changer\\list.ini");
-				sftpChannel.get("/cygdrive/c/Windows/Vportal.ini", "C:\\Changer1.1\\list.ini");
+				//sftpChannel.get("/cygdrive/c/Windows/Vportal.ini", "C:\\Changer1.1\\list.ini");
 				//sftpChannel.get("/cygdrive/d/Changer/list.ini", "C:\\Changer1.1\\list.ini");
 			
 				System.out.println(ipAddress.toString() +path+" -----> "+pathForList);
