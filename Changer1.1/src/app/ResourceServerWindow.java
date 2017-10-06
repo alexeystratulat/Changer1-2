@@ -27,7 +27,7 @@ public class ResourceServerWindow {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	private String listName = "list.ini";
 	private String resFileName = "resources.ini";
 	private String mainProgramFolder = "C:\\Changer1.1";
 	Ini resources;
@@ -112,7 +112,8 @@ public class ResourceServerWindow {
 				
 				resources.put("auth","IPaddres", textField.getText());
 				resources.put("auth","Username", textField_1.getText());
-				resources.put("auth","Password", textField_2.getText());
+				resources.put("auth","Password", textField_2.getText());			
+						
 				
 				try {
 					resources.store();
@@ -121,6 +122,9 @@ public class ResourceServerWindow {
 					e1.printStackTrace();
 				}
 				
+				
+				Connect servToGetResourses  = new Connect(resources.get("auth", "IPaddres"),resources.get("auth", "Username"),resources.get("auth", "Password"),resources.get("auth", "Path"),mainProgramFolder + "\\" + listName);
+				servToGetResourses.downloadingSourseFile();
 				
 				frmFillRequiredValues.setVisible(false);
 			}

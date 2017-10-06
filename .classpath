@@ -2,5 +2,16 @@
 <classpath>
 	<classpathentry kind="src" path="Changer1.1/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Dropbox/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/ganymed-ssh2-261.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/ini4j-0.5.4.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/ini4j-0.5.4-jdk14.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/jsch-0.1.54.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/mail-1_3_2.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/mail-4.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/Prompts changer9.3RC1.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/smtp-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/smtp-1.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/Dropbox/smtp-1.5.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
