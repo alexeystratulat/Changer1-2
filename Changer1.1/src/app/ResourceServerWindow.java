@@ -27,13 +27,17 @@ public class ResourceServerWindow {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private String listName = "list.ini";
-	private String resFileName = "resources.ini";
-	private String mainProgramFolder = "C:\\Changer1.1";
+	private String listName;
+	private String resFileName;
+	private String mainProgramFolder;
 	Ini resources;
 
-	public ResourceServerWindow(Ini resources) throws InvalidFileFormatException, IOException {
-		resources = this.resources;
+	public ResourceServerWindow(Ini resources, String listName, String resFileName, String mainProgramFolder)
+			throws InvalidFileFormatException, IOException {
+		this.resources= resources;
+		this.listName = listName;
+		this.resFileName = resFileName;
+		this.mainProgramFolder= mainProgramFolder;
 
 	}
 
@@ -89,7 +93,6 @@ public class ResourceServerWindow {
 		textField_2.setBounds(10, 150, 181, 20);
 		frmFillRequiredValues.getContentPane().add(textField_2);
 		textField_2.setText(resources.get("auth", "Password"));
-		
 
 		JButton btnNewButton = new JButton("next >");
 		btnNewButton.setBounds(121, 210, 72, 23);
@@ -98,34 +101,26 @@ public class ResourceServerWindow {
 		frmFillRequiredValues.setResizable(false);
 
 		frmFillRequiredValues.setVisible(true);
-		
-		
-		
-		
-		
-		
-		
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				
-				resources.put("auth","IPaddres", textField.getText());
-				resources.put("auth","Username", textField_1.getText());
-				resources.put("auth","Password", textField_2.getText());			
-						
-				
+
+				resources.put("auth", "IPaddres", textField.getText());
+				resources.put("auth", "Username", textField_1.getText());
+				resources.put("auth", "Password", textField_2.getText());
+
 				try {
 					resources.store();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
-				Connect servToGetResourses  = new Connect(resources.get("auth", "IPaddres"),resources.get("auth", "Username"),resources.get("auth", "Password"),resources.get("auth", "Path"),mainProgramFolder + "\\" + listName);
+
+				Connect servToGetResourses = new Connect(resources.get("auth", "IPaddres"),
+						resources.get("auth", "Username"), resources.get("auth", "Password"),
+						resources.get("auth", "Path"), mainProgramFolder + "\\" + listName);
 				servToGetResourses.downloadingSourseFile();
-				
+
 				frmFillRequiredValues.setVisible(false);
 			}
 		});
