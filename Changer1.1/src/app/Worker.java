@@ -27,11 +27,11 @@ public class Worker {
 		}
 		else {
 								
+			WindowOne w1 = new WindowOne(resources, listName, resFileName,
+					mainProgramFolder);
 			
+			w1.initialize();
 			
-			Parser pars = new Parser(mainProgramFolder, listName);
-			
-			System.out.println(Arrays.asList(pars.parserForEnvIni()));
 			
 		}
 

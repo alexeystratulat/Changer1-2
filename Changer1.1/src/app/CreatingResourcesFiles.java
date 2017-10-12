@@ -41,6 +41,9 @@ public class CreatingResourcesFiles {
 
 			System.out.println(folder+"\\"+file);
 		}
+		else {
+			System.out.println(folder+"\\"+file + " is exists");
+		}
 	}
 
 }

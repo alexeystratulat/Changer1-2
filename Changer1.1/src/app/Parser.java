@@ -41,7 +41,7 @@ public class Parser {
 			return massToBeSent;
 
 		} catch (InvalidFileFormatException e) {
-			// TODO Auto-generated catch block
+			System.err.println("\n" +  mainProgramFolder + "\\" + listName + "  - WRONG FORMAT FILE ! \n");
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

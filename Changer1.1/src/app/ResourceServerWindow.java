@@ -34,16 +34,16 @@ public class ResourceServerWindow {
 
 	public ResourceServerWindow(Ini resources, String listName, String resFileName, String mainProgramFolder)
 			throws InvalidFileFormatException, IOException {
-		this.resources= resources;
+		this.resources = resources;
 		this.listName = listName;
 		this.resFileName = resFileName;
-		this.mainProgramFolder= mainProgramFolder;
+		this.mainProgramFolder = mainProgramFolder;
 
 	}
 
 	public void initialize() throws InvalidFileFormatException, IOException {
 		//
-		CreatingDirectory dir = new CreatingDirectory();
+		CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
 		dir.createDir();
 		//
 		CreatingResourcesFiles resFile = new CreatingResourcesFiles(mainProgramFolder, resFileName);
@@ -101,6 +101,7 @@ public class ResourceServerWindow {
 		frmFillRequiredValues.setResizable(false);
 
 		frmFillRequiredValues.setVisible(true);
+		frmFillRequiredValues.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -120,6 +121,10 @@ public class ResourceServerWindow {
 						resources.get("auth", "Username"), resources.get("auth", "Password"),
 						resources.get("auth", "Path"), mainProgramFolder + "\\" + listName);
 				servToGetResourses.downloadingSourseFile();
+
+				WindowOne w1 = new WindowOne(resources, listName, resFileName, mainProgramFolder);
+
+				w1.initialize();
 
 				frmFillRequiredValues.setVisible(false);
 			}
