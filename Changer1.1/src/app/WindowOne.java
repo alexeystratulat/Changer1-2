@@ -83,6 +83,19 @@ public class WindowOne {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				Parser p1 =  new Parser(mainProgramFolder,  listName);
+				try {
+					System.out.println(p1.parserIniForIP());
+				} catch (InvalidFileFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
 				frmChangePrompts.setVisible(false);
 			}
 		});

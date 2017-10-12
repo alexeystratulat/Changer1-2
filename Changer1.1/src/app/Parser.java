@@ -2,9 +2,11 @@ package app;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
+import org.ini4j.Profile.Section;
 
 
 
@@ -15,15 +17,14 @@ public class Parser {
 	static String listName;
 	
 	
+	static String serversIp = "AMS-UP(POD1)";
+
 	public Parser(String mainProgramFolder, String listName) {
 		this.mainProgramFolder = mainProgramFolder;
-		this.listName = listName;		
-		
+		this.listName = listName;
 
 	}
-	
-	
-	
+
 	public static String[] parserForEnvIni() {
 		try {
 			Ini list = new Ini(new File(mainProgramFolder + "\\" + listName));
@@ -41,7 +42,7 @@ public class Parser {
 			return massToBeSent;
 
 		} catch (InvalidFileFormatException e) {
-			System.err.println("\n" +  mainProgramFolder + "\\" + listName + "  - WRONG FORMAT FILE ! \n");
+			System.err.println("\n" + mainProgramFolder + "\\" + listName + "  - WRONG FORMAT FILE ! \n");
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -49,5 +50,41 @@ public class Parser {
 		}
 		return null;
 
-}
+	}
+	
+	
+	public static ArrayList<Servers> parserIniForIP() throws InvalidFileFormatException, IOException {
+		ArrayList<Servers> list = new ArrayList<Servers>();
+		
+
+		Ini listOfIP ;
+		listOfIP = new Ini(new File(mainProgramFolder+ "\\"+listName ));
+
+		Section section = listOfIP.get(serversIp);
+
+			for (String optionKey : section.keySet()) {
+
+				// System.out.println(optionKey.toString());
+				// System.out.println(section.toString());
+
+			//	list.add(new Servers(optionKey.toString(), section.get(optionKey), Main.settings.get("server", "user"),
+				//		Main.settings.get("server", "password")));
+				
+				
+				list.add(new Servers(optionKey.toString(), section.get(optionKey), "user",
+						"password"));
+
+			}
+
+			
+			return list;
+
+		
+
+		
+
+	
+	
+	
+	}
 }
