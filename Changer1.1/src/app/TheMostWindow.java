@@ -9,16 +9,35 @@ import javax.swing.Box;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
+
+import org.ini4j.Ini;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TheMostWindow {
+	private String mainProgramFolder;
+	private String listName;
+	private Ini resources;
+	private String resFileName;
+	
+	
+	
 
 	private JFrame frame;
-
-public TheMostWindow() {
 	
+	
+	
+	
+	
+	
+
+public TheMostWindow(Ini resources, String listName, String resFileName, String mainProgramFolder) {
+	this.resources = resources;
+	this.listName = listName;
+	this.resFileName = resFileName;
+	this.mainProgramFolder = mainProgramFolder;
 	
 	
 	
@@ -86,6 +105,22 @@ public TheMostWindow() {
 		
 		
 		
+		JButton button = new JButton("<< Back");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				WindowOne w1 = new WindowOne(resources, listName, resFileName, mainProgramFolder);
+
+				w1.initialize();
+
+				frame.setVisible(false);
+				
+				
+				
+			}
+		});
+		button.setBounds(685, 655, 89, 23);
+		frame.getContentPane().add(button);
 		
 		
 		
@@ -223,6 +258,7 @@ public TheMostWindow() {
 		JButton btnButton_4 = new JButton("button6");
 		btnButton_4.setBounds(677, 560, 97, 23);
 		frame.getContentPane().add(btnButton_4);
+		
 		
 		
 	}

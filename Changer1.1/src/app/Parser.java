@@ -15,9 +15,9 @@ import org.ini4j.Profile.Section;
 public class Parser {
 	static String mainProgramFolder;
 	static String listName;
-	
-	
-	static String serversIp = "AMS-UP(POD1)";
+	static Ini list;
+	static Ini listOfIP ;
+
 
 	public Parser(String mainProgramFolder, String listName) {
 		this.mainProgramFolder = mainProgramFolder;
@@ -27,7 +27,7 @@ public class Parser {
 
 	public static String[] parserForEnvIni() {
 		try {
-			Ini list = new Ini(new File(mainProgramFolder + "\\" + listName));
+			 list = new Ini(new File(mainProgramFolder + "\\" + listName));
 
 			String[] massToBeSent = new String[list.keySet().size()];
 
@@ -53,11 +53,11 @@ public class Parser {
 	}
 	
 	
-	public static ArrayList<Servers> parserIniForIP() throws InvalidFileFormatException, IOException {
+	public static ArrayList<Servers> parserIniForIP( String serversIp) throws InvalidFileFormatException, IOException {
 		ArrayList<Servers> list = new ArrayList<Servers>();
 		
 
-		Ini listOfIP ;
+		
 		listOfIP = new Ini(new File(mainProgramFolder+ "\\"+listName ));
 
 		Section section = listOfIP.get(serversIp);

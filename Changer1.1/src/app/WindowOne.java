@@ -84,9 +84,17 @@ public class WindowOne {
 			public void actionPerformed(ActionEvent e) {
 
 				Parser p1 =  new Parser(mainProgramFolder,  listName);
+				
+				
+				try {
+					System.out.println(p1.parserIniForIP(comboBox.getSelectedItem().toString()));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				frmChangePrompts.setVisible(false);
 				
-				TheMostWindow most = new TheMostWindow();
+				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,  mainProgramFolder);
 				most.initialize();
 			}
 		});
