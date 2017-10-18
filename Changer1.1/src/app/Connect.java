@@ -84,6 +84,25 @@ public class Connect {
 
 		return null;
 	}
+	
+	
+	public String checkConnection() {
+		
+		
+		
+		
+
+		return null;
+	}
+	public String setIniForAu() {
+		
+		return null;
+	}
+	
+public String setIniForSt() {
+		
+		return null;
+	}
 
 	public String downloadingSettingFile() {
 
