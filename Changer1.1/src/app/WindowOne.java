@@ -8,8 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.IOException;
-
-
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,6 +27,8 @@ public class WindowOne {
 	private String listName;
 	private Ini resources;
 	private String resFileName;
+	private String selectedItem;
+	ArrayList<Servers> listOfServers;
 	Parser pars;
 
 	
@@ -36,6 +37,7 @@ public class WindowOne {
 		this.listName = listName;
 		this.resFileName = resFileName;
 		this.mainProgramFolder = mainProgramFolder;
+		//System.out.println(resources.get("auth", "Username").toString());
 		
 		
 		System.out.println(resources + " " + listName + " "+ resFileName+ " "+ mainProgramFolder );
@@ -87,14 +89,17 @@ public class WindowOne {
 				
 				
 				try {
-					System.out.println(p1.parserIniForIP(comboBox.getSelectedItem().toString()));
+				//	System.out.println(p1.parserIniForIP(comboBox.getSelectedItem().toString()));
+					listOfServers  = p1.parserIniForIP(comboBox.getSelectedItem());
+					selectedItem = comboBox.getSelectedItem().toString();
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				frmChangePrompts.setVisible(false);
 				
-				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,  mainProgramFolder);
+				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,selectedItem, listOfServers  );
 				most.initialize();
 			}
 		});

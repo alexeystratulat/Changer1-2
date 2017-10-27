@@ -14,7 +14,7 @@ public class Worker {
 	static String mainProgramFolder = "C:\\Changer1.1";
 
 	public static void main(String[] args) throws InvalidFileFormatException, IOException {
-		
+		resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));
 		
 		//listFile - env ip file 
 		File listFile = new File(mainProgramFolder + "\\" + listName);

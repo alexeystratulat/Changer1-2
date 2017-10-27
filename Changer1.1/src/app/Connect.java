@@ -6,6 +6,8 @@ import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
+import Starter.Editor;
+
 
 
 public class Connect {
@@ -15,6 +17,7 @@ public class Connect {
 	private String password;
 	private String path;
 	private String pathForList;
+	private Servers server;
 	
 	private static int port = 22;
 
@@ -24,6 +27,14 @@ public class Connect {
 		this.password = password;
 		this.path = path;
 		this.pathForList = pathForList;
+		
+	}
+
+	public Connect(Servers server, String username, String password) {
+		this.server = server;
+		this.username = username;
+		this.password = password;
+		// TODO Auto-generated constructor stub
 	}
 
 	public String downloadingSourseFile() {
@@ -88,11 +99,38 @@ public class Connect {
 	
 	public String checkConnection() {
 		
-		
-		
-		
+		String done = "connected";
+		String error = "connection error!";
+		try {
 
-		return null;
+			JSch jsch = new JSch();
+			Session session = jsch.getSession(username, server.getIpAdress(), port);
+			session.setPassword(password);
+			session.setConfig("StrictHostKeyChecking", " no");
+			System.out.println(server.getIpAdress().toString() + " Establishing Connection...");
+			session.connect();
+			System.out.println(server.getIpAdress().toString() + " Connection established.");
+			
+			ChannelSftp sftpChannel = (ChannelSftp) session.openChannel("sftp");
+			sftpChannel.connect();
+			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
+			//
+
+			
+
+			sftpChannel.disconnect();
+			session.disconnect();
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			return error;
+		}
+	
+
+		return done;
 	}
 	public String setIniForAu() {
 		

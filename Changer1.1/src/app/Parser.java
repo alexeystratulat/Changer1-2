@@ -53,14 +53,14 @@ public class Parser {
 	}
 	
 	
-	public static ArrayList<Servers> parserIniForIP( String serversIp) throws InvalidFileFormatException, IOException {
+	public static ArrayList<Servers> parserIniForIP( Object object) throws InvalidFileFormatException, IOException {
 		ArrayList<Servers> list = new ArrayList<Servers>();
 		
 
 		
 		listOfIP = new Ini(new File(mainProgramFolder+ "\\"+listName ));
 
-		Section section = listOfIP.get(serversIp);
+		Section section = listOfIP.get(object);
 
 			for (String optionKey : section.keySet()) {
 

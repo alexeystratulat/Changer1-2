@@ -54,7 +54,7 @@ public class ResourceServerWindow {
 			e.printStackTrace();
 		}
 		//
-		resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));
+		resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));         //-------------------------?????
 
 		// WINDOW
 
