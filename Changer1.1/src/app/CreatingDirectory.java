@@ -1,11 +1,13 @@
 package app;
 
 import java.io.File;
+import java.io.IOException;
 
 public class CreatingDirectory {
 	public String mainProgramFolder;
+
 	public CreatingDirectory(String mainProgramFolder) {
-		this.mainProgramFolder =mainProgramFolder;
+		this.mainProgramFolder = mainProgramFolder;
 	}
 
 	public void createDir() {
@@ -21,4 +23,16 @@ public class CreatingDirectory {
 		}
 
 	}
+
+	public void createDirForConfigOfServer(String name) {
+
+		File file = new File(mainProgramFolder + "\\" + name);
+		if (!file.exists()) {
+			System.out.println(mainProgramFolder + "\\" + name+ "working dir not exist ");
+			file.mkdir();
+			System.out.println(mainProgramFolder + "\\" + name+ " created");
+		}
+		System.out.println(mainProgramFolder + "\\" + name+ " exists");
+	}
+
 }

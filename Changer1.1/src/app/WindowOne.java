@@ -99,7 +99,7 @@ public class WindowOne {
 				}
 				frmChangePrompts.setVisible(false);
 				
-				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,selectedItem, listOfServers  );
+				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,selectedItem, listOfServers, mainProgramFolder  );
 				most.initialize();
 			}
 		});

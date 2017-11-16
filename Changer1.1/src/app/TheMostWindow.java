@@ -36,7 +36,7 @@ public class TheMostWindow {
 	JLabel lblconnecton;
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
-			ArrayList<Servers> listOfServers) {
+			ArrayList<Servers> listOfServers ,String mainProgramFolder) {
 		this.resources = resources;
 		this.listName = listName;
 		this.resFileName = resFileName;
@@ -141,7 +141,7 @@ public class TheMostWindow {
 		Thread thread1 = new Thread() {
 			public void run() {
 				System.out.println(resources.get("auth", "Username").toString());
-				Connect ckeckConnection = new Connect(listOfServers.get(0),resources.get("auth", "Username"), resources.get("auth", "Password"));
+				Connect ckeckConnection = new Connect(listOfServers.get(0),resources.get("auth", "Username"), resources.get("auth", "Password"), mainProgramFolder);
 				lblconnecton.setText(ckeckConnection.checkConnection());
 				
 				
