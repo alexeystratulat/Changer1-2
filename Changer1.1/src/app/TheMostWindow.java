@@ -141,7 +141,7 @@ public class TheMostWindow {
 		Thread thread1 = new Thread() {
 			public void run() {
 				System.out.println(resources.get("auth", "Username").toString());
-				Connect ckeckConnection = new Connect(listOfServers.get(0),resources.get("auth", "Username"), resources.get("auth", "Password"), mainProgramFolder);
+				Connect ckeckConnection = new Connect(listOfServers.get(0),resources.get("auth", "Username"), resources.get("auth", "Password"), mainProgramFolder, resources);
 				lblconnecton.setText(ckeckConnection.checkConnection());
 				
 				

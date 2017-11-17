@@ -2,6 +2,8 @@ package app;
 
 import java.io.File;
 
+import org.ini4j.Ini;
+
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
@@ -15,6 +17,7 @@ public class Connect {
 	private String pathForList;
 	private Servers server;
 	private String mainProgramFolder;
+	private Ini resources;
 
 	private static int port = 22;
 
@@ -27,11 +30,12 @@ public class Connect {
 
 	}
 
-	public Connect(Servers server, String username, String password, String mainProgramFolder) {
+	public Connect(Servers server, String username, String password, String mainProgramFolder,Ini resources) {
 		this.server = server;
 		this.username = username;
 		this.password = password;
 		this.mainProgramFolder = mainProgramFolder;
+		this.resources = resources;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -90,6 +94,10 @@ public class Connect {
 			sftpChannel.connect();
 			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
 			//
+			
+			CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
+			dir.createDirForConfigOfServer(server.getServerName().toString());
+			sftpChannel.get(resources.get("path", "pathForConfigFile"), mainProgramFolder + "\\" +server.getServerName().toString());
 
 			sftpChannel.disconnect();
 			session.disconnect();
@@ -98,10 +106,10 @@ public class Connect {
 			return error;
 		}
 
-		CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
-		dir.createDirForConfigOfServer(server.getServerName().toString());
-		setIniForAu();
-		setIniForSt();
+		
+		
+	//setIniForAu();
+		//setIniForSt();
 
 		return done;
 	}
@@ -116,9 +124,6 @@ public class Connect {
 		return null;
 	}
 
-	public String downloadingSettingFile() {
 
-		return null;
-	}
 
 }
