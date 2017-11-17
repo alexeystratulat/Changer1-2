@@ -107,9 +107,10 @@ public class Connect {
 		}
 
 		
+		Editor edit = new Editor();
 		
-	//setIniForAu();
-		//setIniForSt();
+		edit.makingVportal_st(mainProgramFolder + "\\" +server.getServerName().toString(),resources );
+		edit.makingVportal_au();
 
 		return done;
 	}
