@@ -107,9 +107,11 @@ public class Connect {
 		}
 
 		
-		Editor edit = new Editor();
+		Editor edit = new Editor(mainProgramFolder + "\\" +server.getServerName().toString(),resources);
 		
-		edit.makingVportal_st(mainProgramFolder + "\\" +server.getServerName().toString(),resources );
+		System.out.println(mainProgramFolder + "\\" +server.getServerName().toString()+" azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		
+		edit.makingVportal_st( );
 		edit.makingVportal_au();
 
 		return done;

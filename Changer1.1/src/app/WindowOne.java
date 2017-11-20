@@ -44,7 +44,10 @@ public class WindowOne {
 		
 		pars = new Parser(mainProgramFolder, listName);
 
-		// TODO Auto-generated constructor stub
+		CreatingDirectory dirToDelete = new CreatingDirectory(mainProgramFolder);
+		dirToDelete.deletingDir();
+		
+		
 	}
 
 	public void initialize() {

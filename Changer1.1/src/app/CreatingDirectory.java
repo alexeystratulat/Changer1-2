@@ -35,4 +35,28 @@ public class CreatingDirectory {
 		System.out.println(mainProgramFolder + "\\" + name+ " exists");
 	}
 
+	
+	public void deletingDir() {		
+		
+		File theDir = new File(mainProgramFolder);
+		
+		
+		for (File file : theDir.listFiles()) {
+			if (file.isDirectory()) {
+
+				for (File fileToDeleteTxt : file.listFiles()) {
+					fileToDeleteTxt.delete();
+
+				}
+
+				file.delete();
+			}
+
+		}
+
+		
+		
+	}
+	
+	
 }
