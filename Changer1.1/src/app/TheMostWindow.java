@@ -27,16 +27,15 @@ public class TheMostWindow {
 	private String selectedItem; // name of choisen combobox
 	ArrayList<Servers> listOfServers;
 	Connect ckeckConnection;
-	
 
 	private JFrame frame;
 
-	JCheckBox chckbxCheckBox;
-	JLabel label;
+	JCheckBox chckbxCheckBox, chckbxCheckBox_1;
+	JLabel label,label_1;
 	JLabel lblconnecton;
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
-			ArrayList<Servers> listOfServers ,String mainProgramFolder) {
+			ArrayList<Servers> listOfServers, String mainProgramFolder) {
 		this.resources = resources;
 		this.listName = listName;
 		this.resFileName = resFileName;
@@ -98,6 +97,8 @@ public class TheMostWindow {
 		label = new JLabel(listOfServers.get(0).getIpAdress().toString());
 		label.setBounds(30, 53, 101, 14);
 		//
+		//
+		// 2nd
 		
 
 		//
@@ -135,17 +136,14 @@ public class TheMostWindow {
 		lblconnecton = new JLabel("1connecton...");
 		lblconnecton.setBounds(30, 115, 131, 14);
 		frame.getContentPane().add(lblconnecton);
-		
-		
-		
+
 		Thread thread1 = new Thread() {
 			public void run() {
 				System.out.println(resources.get("auth", "Username").toString());
-				Connect ckeckConnection = new Connect(listOfServers.get(0),resources.get("auth", "Username"), resources.get("auth", "Password"), mainProgramFolder, resources);
+				Connect ckeckConnection = new Connect(listOfServers.get(0), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
 				lblconnecton.setText(ckeckConnection.checkConnection());
-				
-				
-				
+
 			}
 		};
 		thread1.start();
@@ -161,13 +159,19 @@ public class TheMostWindow {
 	}
 
 	private void serv2() {
-		JCheckBox chckbxCheckBox_1 = new JCheckBox("check box2");
+		
+		
+		chckbxCheckBox_1 = new JCheckBox(listOfServers.get(1).getServerName().toString());
 		chckbxCheckBox_1.setBounds(10, 177, 97, 23);
 		frame.getContentPane().add(chckbxCheckBox_1);
-
-		JLabel label_1 = new JLabel("192.192.192.192");
+		//
+		label_1 = new JLabel(listOfServers.get(1).getIpAdress().toString());
 		label_1.setBounds(30, 153, 101, 14);
 		frame.getContentPane().add(label_1);
+		
+
+
+		//
 
 		JLabel lblconnecton_1 = new JLabel("2connecton...");
 		lblconnecton_1.setBounds(30, 215, 131, 14);
