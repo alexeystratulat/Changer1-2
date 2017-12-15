@@ -33,6 +33,7 @@ public class TheMostWindow {
 	JCheckBox chckbxCheckBox, chckbxCheckBox_1;
 	JLabel label,label_1;
 	JLabel lblconnecton;
+	JLabel lblconnecton_1;
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
 			ArrayList<Servers> listOfServers, String mainProgramFolder) {
@@ -99,6 +100,14 @@ public class TheMostWindow {
 		//
 		//
 		// 2nd
+		chckbxCheckBox_1 = new JCheckBox(listOfServers.get(1).getServerName().toString());
+		chckbxCheckBox_1.setBounds(10, 177, 97, 23);
+		//
+		label_1 = new JLabel(listOfServers.get(1).getIpAdress().toString());
+		label_1.setBounds(30, 153, 101, 14);
+		
+		
+		
 		
 
 		//
@@ -161,25 +170,32 @@ public class TheMostWindow {
 	private void serv2() {
 		
 		
-		chckbxCheckBox_1 = new JCheckBox(listOfServers.get(1).getServerName().toString());
-		chckbxCheckBox_1.setBounds(10, 177, 97, 23);
-		frame.getContentPane().add(chckbxCheckBox_1);
-		//
-		label_1 = new JLabel(listOfServers.get(1).getIpAdress().toString());
-		label_1.setBounds(30, 153, 101, 14);
-		frame.getContentPane().add(label_1);
 		
-
-
+		frame.getContentPane().add(chckbxCheckBox_1);
+		//		
+		frame.getContentPane().add(label_1);	
 		//
-
-		JLabel lblconnecton_1 = new JLabel("2connecton...");
+		lblconnecton_1 = new JLabel("2connecton...");
 		lblconnecton_1.setBounds(30, 215, 131, 14);
 		frame.getContentPane().add(lblconnecton_1);
+		Thread thread1 = new Thread() {
+			public void run() {
+				System.out.println(resources.get("auth", "Username").toString());
+				Connect ckeckConnection = new Connect(listOfServers.get(1), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
+				lblconnecton_1.setText(ckeckConnection.checkConnection());
+				
+			}
+		};
+		thread1.start();
 
 		JButton btnButton = new JButton("button2");
 		btnButton.setBounds(677, 160, 97, 23);
 		frame.getContentPane().add(btnButton);
+		
+		
+		
+		
 
 	}
 
