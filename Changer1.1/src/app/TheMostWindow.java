@@ -30,10 +30,10 @@ public class TheMostWindow {
 
 	private JFrame frame;
 
-	JCheckBox chckbxCheckBox, chckbxCheckBox_1;
-	JLabel label,label_1;
-	JLabel lblconnecton;
-	JLabel lblconnecton_1;
+	JCheckBox chckbxCheckBox, chckbxCheckBox_1,chckbxCheckBox_2,chckbxCheckBox_3,chckbxCheckBox_4,chckbxCheckBox_5;
+	JLabel label,label_1,label_2,label_3,label_4,label_5;
+	JLabel lblconnecton,lblconnecton_1,lblconnecton_2,lblconnecton_3,lblconnecton_4,lblconnecton_5;
+	 
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
 			ArrayList<Servers> listOfServers, String mainProgramFolder) {
@@ -106,9 +106,27 @@ public class TheMostWindow {
 		label_1 = new JLabel(listOfServers.get(1).getIpAdress().toString());
 		label_1.setBounds(30, 153, 101, 14);
 		
+		// 3nd
+		chckbxCheckBox_2 = new JCheckBox(listOfServers.get(2).getServerName().toString());
+		chckbxCheckBox_2.setBounds(10, 277, 97, 23);
+		label_2 = new JLabel(listOfServers.get(2).getIpAdress().toString());
+		label_2.setBounds(30, 253, 101, 14);
+		// 4nd
+		chckbxCheckBox_3 = new JCheckBox(listOfServers.get(3).getServerName().toString());
+		chckbxCheckBox_3.setBounds(10, 377, 97, 23);
 		
-		
-		
+		label_3 = new JLabel(listOfServers.get(3).getIpAdress().toString());
+		label_3.setBounds(30, 353, 101, 14);
+		//5
+		chckbxCheckBox_4 = new JCheckBox(listOfServers.get(4).getServerName().toString());
+		chckbxCheckBox_4.setBounds(10, 477, 97, 23);
+		label_4 = new JLabel(listOfServers.get(4).getIpAdress().toString());
+		label_4.setBounds(30, 453, 101, 14);
+		//6
+		chckbxCheckBox_5 = new JCheckBox(listOfServers.get(5).getServerName().toString());
+		chckbxCheckBox_5.setBounds(10, 577, 97, 23);
+		label_5 = new JLabel(listOfServers.get(5).getIpAdress().toString());
+		label_5.setBounds(30, 553, 101, 14);
 
 		//
 		serv1();
@@ -167,9 +185,7 @@ public class TheMostWindow {
 
 	}
 
-	private void serv2() {
-		
-		
+	private void serv2() {		
 		
 		frame.getContentPane().add(chckbxCheckBox_1);
 		//		
@@ -200,12 +216,10 @@ public class TheMostWindow {
 	}
 
 	private void serv3() {
-		JCheckBox chckbxCheckBox_2 = new JCheckBox("check box3");
-		chckbxCheckBox_2.setBounds(10, 277, 97, 23);
-		frame.getContentPane().add(chckbxCheckBox_2);
-
-		JLabel label_2 = new JLabel("192.192.192.192");
-		label_2.setBounds(30, 253, 101, 14);
+		
+		
+		frame.getContentPane().add(chckbxCheckBox_2);		
+		
 		frame.getContentPane().add(label_2);
 
 		JLabel lblconnecton_2 = new JLabel("3connecton...");
@@ -219,12 +233,12 @@ public class TheMostWindow {
 	}
 
 	private void serv4() {
-		JCheckBox chckbxCheckBox_3 = new JCheckBox("check box4");
-		chckbxCheckBox_3.setBounds(10, 377, 97, 23);
+		
+		
 		frame.getContentPane().add(chckbxCheckBox_3);
 
-		JLabel label_3 = new JLabel("192.192.192.192");
-		label_3.setBounds(30, 353, 101, 14);
+		
+		
 		frame.getContentPane().add(label_3);
 
 		JLabel lblconnecton_3 = new JLabel("4connecton...");
@@ -238,12 +252,12 @@ public class TheMostWindow {
 	}
 
 	private void serv5() {
-		JCheckBox chckbxCheckBox_4 = new JCheckBox("check box5");
-		chckbxCheckBox_4.setBounds(10, 477, 97, 23);
+		
+		
 		frame.getContentPane().add(chckbxCheckBox_4);
 
-		JLabel label_4 = new JLabel("192.192.192.192");
-		label_4.setBounds(30, 453, 101, 14);
+		
+		
 		frame.getContentPane().add(label_4);
 
 		JLabel lblconnecton_4 = new JLabel("5connecton...");
@@ -257,12 +271,12 @@ public class TheMostWindow {
 	}
 
 	private void serv6() {
-		JCheckBox chckbxCheckBox_5 = new JCheckBox("check box6");
-		chckbxCheckBox_5.setBounds(10, 577, 97, 23);
+		
+		
 		frame.getContentPane().add(chckbxCheckBox_5);
 
-		JLabel label_5 = new JLabel("192.192.192.192");
-		label_5.setBounds(30, 553, 101, 14);
+		
+		
 		frame.getContentPane().add(label_5);
 
 		JLabel lblconnecton_5 = new JLabel("6connecton...");
