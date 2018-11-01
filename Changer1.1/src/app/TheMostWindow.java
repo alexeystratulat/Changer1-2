@@ -166,7 +166,7 @@ public class TheMostWindow {
 
 		Thread thread1 = new Thread() {
 			public void run() {
-				System.out.println(resources.get("auth", "Username").toString());
+				//System.out.println(resources.get("auth", "Username").toString());
 				Connect ckeckConnection = new Connect(listOfServers.get(0), resources.get("auth", "Username"),
 						resources.get("auth", "Password"), mainProgramFolder, resources);
 				lblconnecton.setText(ckeckConnection.checkConnection());
@@ -219,12 +219,26 @@ public class TheMostWindow {
 		
 		
 		frame.getContentPane().add(chckbxCheckBox_2);		
-		
+		//
 		frame.getContentPane().add(label_2);
-
-		JLabel lblconnecton_2 = new JLabel("3connecton...");
+        //
+		lblconnecton_2 = new JLabel("3connecton...");
 		lblconnecton_2.setBounds(30, 315, 131, 14);
-		frame.getContentPane().add(lblconnecton_2);
+		frame.getContentPane().add(lblconnecton_2);			
+		
+		Thread thread1 = new Thread() {
+			public void run() {
+				System.out.println(resources.get("auth", "Username").toString());
+				Connect ckeckConnection = new Connect(listOfServers.get(2), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
+				lblconnecton_2.setText(ckeckConnection.checkConnection());
+				
+			}
+		};
+		thread1.start();
+		
+		
+		
 
 		JButton btnButton_1 = new JButton("button3");
 		btnButton_1.setBounds(677, 260, 97, 23);
@@ -241,9 +255,25 @@ public class TheMostWindow {
 		
 		frame.getContentPane().add(label_3);
 
-		JLabel lblconnecton_3 = new JLabel("4connecton...");
+		 lblconnecton_3 = new JLabel("4connecton...");
 		lblconnecton_3.setBounds(30, 415, 131, 14);
 		frame.getContentPane().add(lblconnecton_3);
+		
+		
+		Thread thread1 = new Thread() {
+			public void run() {
+				System.out.println(resources.get("auth", "Username").toString());
+				Connect ckeckConnection = new Connect(listOfServers.get(3), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
+				lblconnecton_3.setText(ckeckConnection.checkConnection());
+				
+			}
+		};
+		thread1.start();
+		
+		
+		
+		
 
 		JButton btnButton_2 = new JButton("button4");
 		btnButton_2.setBounds(677, 360, 97, 23);
@@ -260,9 +290,23 @@ public class TheMostWindow {
 		
 		frame.getContentPane().add(label_4);
 
-		JLabel lblconnecton_4 = new JLabel("5connecton...");
+		lblconnecton_4 = new JLabel("5connecton...");
 		lblconnecton_4.setBounds(30, 515, 131, 14);
 		frame.getContentPane().add(lblconnecton_4);
+		
+		
+		Thread thread1 = new Thread() {
+			public void run() {
+				System.out.println(resources.get("auth", "Username").toString());
+				Connect ckeckConnection = new Connect(listOfServers.get(4), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
+				lblconnecton_4.setText(ckeckConnection.checkConnection());
+				
+			}
+		};
+		thread1.start();
+		
+		
 
 		JButton btnButton_3 = new JButton("button5");
 		btnButton_3.setBounds(677, 460, 97, 23);
@@ -279,9 +323,23 @@ public class TheMostWindow {
 		
 		frame.getContentPane().add(label_5);
 
-		JLabel lblconnecton_5 = new JLabel("6connecton...");
+		lblconnecton_5 = new JLabel("6connecton...");
 		lblconnecton_5.setBounds(30, 615, 131, 14);
 		frame.getContentPane().add(lblconnecton_5);
+		
+		
+		Thread thread1 = new Thread() {
+			public void run() {
+				System.out.println(resources.get("auth", "Username").toString());
+				Connect ckeckConnection = new Connect(listOfServers.get(5), resources.get("auth", "Username"),
+						resources.get("auth", "Password"), mainProgramFolder, resources);
+				lblconnecton_5.setText(ckeckConnection.checkConnection());
+				
+			}
+		};
+		thread1.start();
+		
+		
 
 		JButton btnButton_4 = new JButton("button6");
 		btnButton_4.setBounds(677, 560, 97, 23);

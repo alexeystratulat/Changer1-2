@@ -82,6 +82,8 @@ public class Connect {
 		String error = "connection error!";
 		try {
 
+			System.out.println("Connecting to server: "+"username= " + username +" server= " + server.getIpAdress()+" password= " + password);
+			
 			JSch jsch = new JSch();
 			Session session = jsch.getSession(username, server.getIpAdress(), port);
 			session.setPassword(password);
