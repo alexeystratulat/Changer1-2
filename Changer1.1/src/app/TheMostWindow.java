@@ -176,6 +176,8 @@ public class TheMostWindow {
 		JButton btnNewButton = new JButton("button1");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				System.out.println("BUTTON TYPED");
 			}
 		});
 		btnNewButton.setBounds(677, 60, 97, 23);
