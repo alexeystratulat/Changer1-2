@@ -15,7 +15,7 @@ public class Editor {
 	private PrintWriter writer = null;
 	private FileReader reader = null;
 	private Scanner read;
-
+//
 	public Editor(String pathToFile, Ini resources) {
 		this.pathToFile = pathToFile;
 		this.resources = resources;
