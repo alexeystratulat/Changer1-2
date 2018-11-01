@@ -111,7 +111,7 @@ public class Connect {
 		
 		Editor edit = new Editor(mainProgramFolder + "\\" +server.getServerName().toString(),resources);
 		
-		System.out.println(mainProgramFolder + "\\" +server.getServerName().toString()+" azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		System.out.println("Editor for "+mainProgramFolder + "\\" +server.getServerName().toString()+" is started" );
 		
 		edit.makingVportal_st( );
 		edit.makingVportal_au();
