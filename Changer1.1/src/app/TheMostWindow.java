@@ -144,6 +144,29 @@ public class TheMostWindow {
 		frame.getContentPane().add(button);
 
 		frame.setVisible(true);
+
+		JButton switchToManualButton = new JButton("Switch to manual");
+		switchToManualButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				System.out.println("Bytton is typed");
+
+			}
+		});
+		switchToManualButton.setBounds(185, 655, 170, 23);
+		frame.getContentPane().add(switchToManualButton);
+
+		JButton switchToManualAutomation = new JButton("Switch to automation");
+		switchToManualAutomation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				System.out.println("Bytton is typed");
+
+			}
+		});
+		switchToManualAutomation.setBounds(385, 655, 170, 23);
+		frame.getContentPane().add(switchToManualAutomation);
+
 	}
 
 	//
