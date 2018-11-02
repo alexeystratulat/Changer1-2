@@ -2,6 +2,8 @@ package app;
 
 import java.awt.Checkbox;
 
+import javax.swing.JCheckBox;
+
 public class Servers {
 	
 
@@ -17,7 +19,7 @@ public class Servers {
 	private String promptStatus;
 	
 	
-	private Checkbox check1;
+	private JCheckBox check1;
 	
 	public String getIpAdress() {
 		return ipAdress;
@@ -69,12 +71,12 @@ public class Servers {
 		this.promptStatus = promptStatus;
 	}
 
-	public Checkbox getCheck1() {
+	public JCheckBox getCheck1() {
 		return check1;
 	}
 
-	public void setCheck1(Checkbox check1) {
-		this.check1 = check1;
+	public void setCheck1(JCheckBox chckbxCheckBox) {
+		this.check1 = chckbxCheckBox;
 	}
 
 	
