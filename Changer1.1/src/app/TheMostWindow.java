@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class TheMostWindow {
-	
+
 	private String mainProgramFolder;
 	private String listName;
 	private Ini resources;
@@ -28,15 +28,15 @@ public class TheMostWindow {
 	private String selectedItem; // name of choisen combobox
 	ArrayList<Servers> listOfServers;
 	Connect ckeckConnection;
-	int ForCheckboxDistance2,forLableIPDistance2,forConnectionDistance2,forTypeOfPromptsDistance2;
-	
+	int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
+			forEditButtonDistance2;
 
 	private JFrame frame;
-	private JCheckBox chBOX;
-	
-	
-	JCheckBox[] CheckBoxes = new JCheckBox [10];
-	//JCheckBox chckbxCheckBox, chckbxCheckBox_1, chckbxCheckBox_2, chckbxCheckBox_3, chckbxCheckBox_4, chckbxCheckBox_5;
+
+	JButton[] editButton = new JButton[10];
+	JCheckBox[] CheckBoxes = new JCheckBox[10];
+	// JCheckBox chckbxCheckBox, chckbxCheckBox_1, chckbxCheckBox_2,
+	// chckbxCheckBox_3, chckbxCheckBox_4, chckbxCheckBox_5;
 	JLabel label, label_1, label_2, label_3, label_4, label_5;
 	JLabel lblconnecton, lblconnecton_1, lblconnecton_2, lblconnecton_3, lblconnecton_4, lblconnecton_5;
 	JLabel typeOfprompts, typeOfprompts_1, typeOfprompts_2, typeOfprompts_3, typeOfprompts_4, typeOfprompts_5;
@@ -98,34 +98,35 @@ public class TheMostWindow {
 		frame.getContentPane().add(chckbxNewCheckBox);
 
 		System.out.println(listOfServers.size());
-		//serv1();
-		//serv2();
-		//serv3();
-		//serv4();
-		//serv5();
-		//serv6();
+		// serv1();
+		// serv2();
+		// serv3();
+		// serv4();
+		// serv5();
+		// serv6();
 		forConnectionDistance2 = 115;
 		ForCheckboxDistance2 = 77;
 		forLableIPDistance2 = 53;
-		forTypeOfPromptsDistance2= 115;
-		for(int counter =0; counter <listOfServers.size(); counter++){
-			
-			
-			servTest(listOfServers.get(counter),counter,ForCheckboxDistance2,forLableIPDistance2,forConnectionDistance2,forTypeOfPromptsDistance2);
+		forTypeOfPromptsDistance2 = 115;
+		forEditButtonDistance2 = 77;
+		for (int counter = 0; counter < listOfServers.size(); counter++) {
+
+			servTest(listOfServers.get(counter), counter, ForCheckboxDistance2, forLableIPDistance2,
+					forConnectionDistance2, forTypeOfPromptsDistance2, forEditButtonDistance2);
 			ForCheckboxDistance2 += 100;
-			forLableIPDistance2 +=100;
+			forLableIPDistance2 += 100;
 			forConnectionDistance2 += 100;
-			forTypeOfPromptsDistance2 +=100;
-			
+			forTypeOfPromptsDistance2 += 100;
+			forEditButtonDistance2 += 100;
+
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
-		
 
 		JButton button = new JButton("<< Back");
 		button.addActionListener(new ActionListener() {
@@ -146,12 +147,13 @@ public class TheMostWindow {
 	}
 
 	//
-	private void servTest(final Servers server,final int counter,int ForCheckboxDistance2,int forLableIPDistance2, int forConnectionDistance2, int forTypeOfPromptsDistance2) {
+	private void servTest(final Servers server, final int counter, int ForCheckboxDistance2, int forLableIPDistance2,
+			int forConnectionDistance2, int forTypeOfPromptsDistance2, int forEditButtonDistance2) {
 		CheckBoxes[counter] = new JCheckBox(server.getServerName().toString());
-		
+
 		CheckBoxes[counter].setBounds(10, ForCheckboxDistance2, 97, 23);
-		//			
-				//
+		//
+		//
 		label = new JLabel(server.getIpAdress().toString());
 		label.setBounds(30, forLableIPDistance2, 101, 14);
 
@@ -162,20 +164,18 @@ public class TheMostWindow {
 		lblconnecton = new JLabel("connecton...");
 		lblconnecton.setBounds(30, forConnectionDistance2, 131, 14);
 		//
-		typeOfprompts = new JLabel("typeOfprompts...!");		
+		typeOfprompts = new JLabel("typeOfprompts...!");
 		typeOfprompts.setBounds(150, forTypeOfPromptsDistance2, 131, 14);
 		//
 		frame.getContentPane().add(lblconnecton);
 		frame.getContentPane().add(typeOfprompts);
-		System.out.println("======"+server.getIpAdress().toString() );
-		
-		
-		
+		System.out.println("======" + server.getIpAdress().toString());
+
 		Thread thread1 = new Thread() {
 			public void run() {
-				
-				System.out.println("CheckConnection = "+server.getIpAdress().toString());
-				 ckeckConnection = new Connect(server, resources.get("auth", "Username"),
+
+				System.out.println("CheckConnection = " + server.getIpAdress().toString());
+				ckeckConnection = new Connect(server, resources.get("auth", "Username"),
 						resources.get("auth", "Password"), mainProgramFolder, resources);
 				lblconnecton.setText(ckeckConnection.checkConnection());
 
@@ -183,263 +183,17 @@ public class TheMostWindow {
 		};
 		thread1.start();
 
-		JButton btnNewButton = new JButton("button1");
-		btnNewButton.addActionListener(new ActionListener() {
+		editButton[counter] = new JButton("edit");
+		editButton[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				System.out.println("BUTTON TYPED");
 				System.out.println(CheckBoxes[counter].isSelected());
 			}
 		});
-		btnNewButton.setBounds(677, 60, 97, 23);
-		frame.getContentPane().add(btnNewButton);
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*private void serv1() {
-		chckbxCheckBox = new JCheckBox(listOfServers.get(0).getServerName().toString());
-		chckbxCheckBox.setBounds(10, 77, 97, 23);
-		//
-		label = new JLabel(listOfServers.get(0).getIpAdress().toString());
-		label.setBounds(30, 53, 101, 14);
-
-		frame.getContentPane().add(chckbxCheckBox);
-		//
-		frame.getContentPane().add(label);
-		//
-		lblconnecton = new JLabel("1connecton...");
-		lblconnecton.setBounds(30, 115, 131, 14);
-		//
-		typeOfprompts = new JLabel("typeOfprompts...!");		
-		typeOfprompts.setBounds(150, 115, 131, 14);
-		//
-		frame.getContentPane().add(lblconnecton);
-		frame.getContentPane().add(typeOfprompts);
-
-		Thread thread1 = new Thread() {
-			public void run() {
-				Connect ckeckConnection = new Connect(listOfServers.get(0), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnNewButton = new JButton("button1");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				System.out.println("BUTTON TYPED");
-			}
-		});
-		btnNewButton.setBounds(677, 60, 97, 23);
-		frame.getContentPane().add(btnNewButton);
-
-	}
-	
-	
-
-	private void serv2() {
-		chckbxCheckBox_1 = new JCheckBox(listOfServers.get(1).getServerName().toString());
-		chckbxCheckBox_1.setBounds(10, 177, 97, 23);
-		//
-		label_1 = new JLabel(listOfServers.get(1).getIpAdress().toString());
-		label_1.setBounds(30, 153, 101, 14);
-
-
-		frame.getContentPane().add(chckbxCheckBox_1);
-		//
-		frame.getContentPane().add(label_1);
-		//
-		lblconnecton_1 = new JLabel("2connecton...");
-		lblconnecton_1.setBounds(30, 215, 131, 14);
-		frame.getContentPane().add(lblconnecton_1);
-		Thread thread1 = new Thread() {
-			public void run() {
-				Connect ckeckConnection = new Connect(listOfServers.get(1), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton_1.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnButton = new JButton("button2");
-		btnButton.setBounds(677, 160, 97, 23);
-		frame.getContentPane().add(btnButton);
+		editButton[counter].setBounds(677, forEditButtonDistance2, 97, 23);
+		frame.getContentPane().add(editButton[counter]);
 
 	}
 
-	private void serv3() {
-		chckbxCheckBox_2 = new JCheckBox(listOfServers.get(2).getServerName().toString());
-		chckbxCheckBox_2.setBounds(10, 277, 97, 23);
-		label_2 = new JLabel(listOfServers.get(2).getIpAdress().toString());
-		label_2.setBounds(30, 253, 101, 14);
-
-		frame.getContentPane().add(chckbxCheckBox_2);
-		//
-		frame.getContentPane().add(label_2);
-		//
-		lblconnecton_2 = new JLabel("3connecton...");
-		lblconnecton_2.setBounds(30, 315, 131, 14);
-		frame.getContentPane().add(lblconnecton_2);
-
-		Thread thread1 = new Thread() {
-			public void run() {
-				Connect ckeckConnection = new Connect(listOfServers.get(2), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton_2.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnButton_1 = new JButton("button3");
-		btnButton_1.setBounds(677, 260, 97, 23);
-		frame.getContentPane().add(btnButton_1);
-
-	}
-
-	private void serv4() {
-		chckbxCheckBox_3 = new JCheckBox(listOfServers.get(3).getServerName().toString());
-		chckbxCheckBox_3.setBounds(10, 377, 97, 23);
-
-		label_3 = new JLabel(listOfServers.get(3).getIpAdress().toString());
-		label_3.setBounds(30, 353, 101, 14);
-
-		frame.getContentPane().add(chckbxCheckBox_3);
-
-		frame.getContentPane().add(label_3);
-
-		lblconnecton_3 = new JLabel("4connecton...");
-		lblconnecton_3.setBounds(30, 415, 131, 14);
-		frame.getContentPane().add(lblconnecton_3);
-
-		Thread thread1 = new Thread() {
-			public void run() {
-
-				Connect ckeckConnection = new Connect(listOfServers.get(3), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton_3.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnButton_2 = new JButton("button4");
-		btnButton_2.setBounds(677, 360, 97, 23);
-		frame.getContentPane().add(btnButton_2);
-
-	}
-
-	private void serv5() {
-		chckbxCheckBox_4 = new JCheckBox(listOfServers.get(4).getServerName().toString());
-		chckbxCheckBox_4.setBounds(10, 477, 97, 23);
-		label_4 = new JLabel(listOfServers.get(4).getIpAdress().toString());
-		label_4.setBounds(30, 453, 101, 14);
-
-		frame.getContentPane().add(chckbxCheckBox_4);
-
-		frame.getContentPane().add(label_4);
-
-		lblconnecton_4 = new JLabel("5connecton...");
-		lblconnecton_4.setBounds(30, 515, 131, 14);
-		frame.getContentPane().add(lblconnecton_4);
-
-		Thread thread1 = new Thread() {
-			public void run() {
-
-				Connect ckeckConnection = new Connect(listOfServers.get(4), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton_4.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnButton_3 = new JButton("button5");
-		btnButton_3.setBounds(677, 460, 97, 23);
-		frame.getContentPane().add(btnButton_3);
-
-	}
-
-	private void serv6() {
-		chckbxCheckBox_5 = new JCheckBox(listOfServers.get(5).getServerName().toString());
-		chckbxCheckBox_5.setBounds(10, 577, 97, 23);
-		label_5 = new JLabel(listOfServers.get(5).getIpAdress().toString());
-		label_5.setBounds(30, 553, 101, 14);
-
-		frame.getContentPane().add(chckbxCheckBox_5);
-
-		frame.getContentPane().add(label_5);
-
-		lblconnecton_5 = new JLabel("6connecton...");
-		lblconnecton_5.setBounds(30, 615, 131, 14);
-		frame.getContentPane().add(lblconnecton_5);
-
-		Thread thread1 = new Thread() {
-			public void run() {
-
-				Connect ckeckConnection = new Connect(listOfServers.get(5), resources.get("auth", "Username"),
-						resources.get("auth", "Password"), mainProgramFolder, resources);
-				lblconnecton_5.setText(ckeckConnection.checkConnection());
-
-			}
-		};
-		thread1.start();
-
-		JButton btnButton_4 = new JButton("button6");
-		btnButton_4.setBounds(677, 560, 97, 23);
-		frame.getContentPane().add(btnButton_4);
-
-	}*/
 }
