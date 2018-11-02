@@ -1,21 +1,28 @@
 package app;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Checkbox;
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JSeparator;
+import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
 import org.ini4j.Ini;
 
+
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -98,12 +105,7 @@ public class TheMostWindow {
 		frame.getContentPane().add(chckbxNewCheckBox);
 
 		System.out.println(listOfServers.size());
-		// serv1();
-		// serv2();
-		// serv3();
-		// serv4();
-		// serv5();
-		// serv6();
+		
 		forConnectionDistance2 = 115;
 		ForCheckboxDistance2 = 77;
 		forLableIPDistance2 = 53;
@@ -186,6 +188,7 @@ public class TheMostWindow {
 		//
 		lblconnecton = new JLabel("connecton...");
 		lblconnecton.setBounds(30, forConnectionDistance2, 131, 14);
+		lblconnecton.setForeground(Color.BLUE);
 		//
 		typeOfprompts = new JLabel("typeOfprompts...!");
 		typeOfprompts.setBounds(150, forTypeOfPromptsDistance2, 131, 14);
@@ -218,5 +221,135 @@ public class TheMostWindow {
 		frame.getContentPane().add(editButton[counter]);
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*private void toShowBlock3() {
+		//
+		String pahtForVportal = theDir + "\\" + nameOfCheckBox3;
+
+		checkBox3 = new JCheckBox(nameOfCheckBox3);
+		checkBox3.setBounds(26, 155, 97, 23);
+		frmChangePrompts.getContentPane().add(checkBox3);
+
+		JTextPane nameOfServ3 = new JTextPane();
+		nameOfServ3.setText(massOfIp[2].toString());
+		nameOfServ3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		nameOfServ3.setBackground(SystemColor.menu);
+		nameOfServ3.setBounds(129, 155, 97, 20);
+		frmChangePrompts.getContentPane().add(nameOfServ3);
+		//
+		statusOfServ3 = new JLabel("connection...");
+		statusOfServ3.setFont(new Font("Linux Biolinum G", Font.BOLD, 14));
+		statusOfServ3.setBounds(36, 188, 159, 14);
+		frmChangePrompts.getContentPane().add(statusOfServ3);
+		//
+		promptsForServ3 = new JLabel("");
+		promptsForServ3.setEnabled(true);
+		promptsForServ3.setFont(new Font("Linux Biolinum G", Font.PLAIN, 12));
+		promptsForServ3.setBounds(236, 155, 123, 23);
+		frmChangePrompts.getContentPane().add(promptsForServ3);
+		//
+		Thread thread = new Thread() {
+			public void run() {
+				Connect conn = new Connect(massOfIp[2], pahtForVportal);
+				statusOfServ3.setText(conn.checkConnection());
+				// enabled button in case of connection established
+				if (statusOfServ3.getText().toString().equals("connected")) {
+					statusOfServ3.setForeground(Color.BLUE);
+					buttonPromptsToAutoEnabled = true;
+					buttonPromptsToManualEnable = true;
+					btnSwitch.setEnabled(buttonPromptsToAutoEnabled);
+					buttonSwitchToManual.setEnabled(buttonPromptsToManualEnable);
+					// checking enadled prompts
+					Comparing checkingEnabledPrompts = new Comparing(pahtForVportal);
+					if (checkingEnabledPrompts.compareFiles().equals("automated prompts")) {
+						promptsForServ3.setForeground(Color.BLUE);
+
+					}
+					if (checkingEnabledPrompts.compareFiles().equals("manual prompts")) {
+						promptsForServ3.setForeground(Color.RED);
+
+					}
+					if (checkingEnabledPrompts.compareFiles().equals("unknown")) {
+						promptsForServ3.setForeground(Color.ORANGE);
+
+					}
+
+					promptsForServ3.setText(checkingEnabledPrompts.compareFiles());
+				}
+				if (statusOfServ3.getText().toString().equals("connection error!")) {
+					statusOfServ3.setForeground(Color.RED);
+
+				}
+
+			}
+		};
+		thread.start();
+		// creating directory
+		File directoryForServ1 = new File(pahtForVportal);
+
+		if (!directoryForServ1.exists()) {
+			System.out.println("creating directory ");
+
+			directoryForServ1.mkdir();
+		}
+
+	}
+	
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
