@@ -111,7 +111,7 @@ public class TheMostWindow {
 		forEditButtonDistance2 = 77;
 		for (int counter = 0; counter < listOfServers.size(); counter++) {
 
-			servTest(listOfServers.get(counter), counter, ForCheckboxDistance2, forLableIPDistance2,
+			showServers(listOfServers.get(counter), counter, ForCheckboxDistance2, forLableIPDistance2,
 					forConnectionDistance2, forTypeOfPromptsDistance2, forEditButtonDistance2);
 			ForCheckboxDistance2 += 100;
 			forLableIPDistance2 += 100;
@@ -147,7 +147,7 @@ public class TheMostWindow {
 	}
 
 	//
-	private void servTest(final Servers server, final int counter, int ForCheckboxDistance2, int forLableIPDistance2,
+	private void showServers(final Servers server, final int counter, int ForCheckboxDistance2, int forLableIPDistance2,
 			int forConnectionDistance2, int forTypeOfPromptsDistance2, int forEditButtonDistance2) {
 		CheckBoxes[counter] = new JCheckBox(server.getServerName().toString());
 
