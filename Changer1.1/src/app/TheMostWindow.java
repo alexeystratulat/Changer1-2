@@ -219,7 +219,7 @@ public class TheMostWindow {
 		});
 		editButton[counter].setBounds(677, forEditButtonDistance2, 97, 23);
 		frame.getContentPane().add(editButton[counter]);
-
+//
 	}
 	
 	
