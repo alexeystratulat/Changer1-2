@@ -21,6 +21,7 @@ public class TheMostWindow {
 	private ArrayList<Servers> listOfServers;
 	private Connect ckeckConnection;
 	private Editor edit;
+	private WindowForEditing windowForEditing;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
 			forEditButtonDistance2;
 
@@ -222,6 +223,7 @@ public class TheMostWindow {
 						resources.get("auth", "Password"), mainProgramFolder, resources);
 				lblconnecton[counter].setText(ckeckConnection.checkConnection());
 				if (lblconnecton[counter].getText().toString().equals("connected")) {
+					editButton[counter].setEnabled(true);
 					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources);
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
 				}
@@ -231,9 +233,14 @@ public class TheMostWindow {
 		thread1.start();
 
 		editButton[counter] = new JButton("edit");
+		editButton[counter].setEnabled(false);
 		editButton[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				windowForEditing = new WindowForEditing(mainProgramFolder + "\\" + server.getServerName().toString(), resources);
+				windowForEditing.initialize();
+				frame.setVisible(false);
+				
+				
 				System.out.println("BUTTON TYPED");
 				System.out.println(CheckBoxes[counter].isSelected());
 			}
