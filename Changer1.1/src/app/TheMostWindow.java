@@ -125,7 +125,7 @@ public class TheMostWindow {
 			forEditButtonDistance2 += 100;
 
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -237,7 +237,7 @@ public class TheMostWindow {
 		editButton[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				wind = new WindowForEditing2(mainProgramFolder + "\\" + server.getServerName().toString(), resources, server.getServerName().toString(), selectedItem);
+				wind = new WindowForEditing2(mainProgramFolder + "\\" + server.getServerName().toString(),server.getServerName().toString(),resources,  listName,  resFileName,selectedItem, listOfServers, mainProgramFolder);
 				wind.initialize();
 				frame.setVisible(false);
 				

@@ -1,8 +1,12 @@
 package app;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -25,13 +29,22 @@ public class WindowForEditing2 {
 	private JButton btnApply;
 	private String serverName;
 	private String selectedItem;
+	private ArrayList<Servers> listOfServers;
+	private String mainProgramFolder;
+	private String resFileName;
+	private String listName;
 
-	public WindowForEditing2(String pathToFile, Ini resources, String serverName,String selectedItem) {
+	public WindowForEditing2(String pathToFile, String serverName,Ini resources, String listName, String resFileName, String selectedItem,
+			ArrayList<Servers> listOfServers, String mainProgramFolder) {
 
-		this.pathToFile = pathToFile;
-		this.resources = resources;
+		this.pathToFile = pathToFile;		
 		this.serverName = serverName;
+		this.resources = resources;
+		this.listName = listName;
+		this.resFileName = resFileName;
 		this.selectedItem = selectedItem;
+		this.mainProgramFolder = mainProgramFolder;
+		this.listOfServers = listOfServers;
 
 		System.out.println(pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString());
 
@@ -44,24 +57,38 @@ public class WindowForEditing2 {
 	public void initialize() {
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 710, 827);
+		frame.setBounds(100, 100, 800, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle(selectedItem + "  "+ serverName);
 		frame.getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 674, 712);
+		scrollPane.setBounds(10, 11, 764, 629);
 		frame.getContentPane().add(scrollPane);
 
 		txtrText = new JTextArea();
 		scrollPane.setViewportView(txtrText);
 		
 		button = new JButton("<< Back");
-		button.setBounds(595, 754, 89, 23);
+		button.setBounds(685, 655, 89, 23);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				
+				
+				
+				
+				frame.setVisible(false);
+				
+				TheMostWindow most = new TheMostWindow(resources,  listName,  resFileName,selectedItem, listOfServers, mainProgramFolder  );
+				most.initialize();
+			}
+		});
 		frame.getContentPane().add(button);
 		
+		
 		btnApply = new JButton("apply");
-		btnApply.setBounds(464, 754, 89, 23);
+		btnApply.setBounds(385, 655, 170, 23);
 		frame.getContentPane().add(btnApply);
 		frame.setVisible(true);
 		show();
