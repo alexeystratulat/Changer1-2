@@ -18,8 +18,6 @@ import javax.swing.JToggleButton;
 
 import org.ini4j.Ini;
 
-
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -47,6 +45,7 @@ public class TheMostWindow {
 	JLabel label, label_1, label_2, label_3, label_4, label_5;
 	JLabel lblconnecton, lblconnecton_1, lblconnecton_2, lblconnecton_3, lblconnecton_4, lblconnecton_5;
 	JLabel typeOfprompts, typeOfprompts_1, typeOfprompts_2, typeOfprompts_3, typeOfprompts_4, typeOfprompts_5;
+	JCheckBox chckbxNewCheckBox;
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
 			ArrayList<Servers> listOfServers, String mainProgramFolder) {
@@ -100,12 +99,29 @@ public class TheMostWindow {
 		separator_7.setBounds(10, 640, 764, 2);
 		frame.getContentPane().add(separator_7);
 		//
-		JCheckBox chckbxNewCheckBox = new JCheckBox("check all");
+		chckbxNewCheckBox = new JCheckBox("check all");
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				System.out.println("Check all");
+				if (chckbxNewCheckBox.isSelected()) {
+					for (int counter = 0; counter < listOfServers.size(); counter++) {
+						CheckBoxes[counter].setSelected(true);
+
+					}
+				} else
+					for (int counter = 0; counter < listOfServers.size(); counter++) {
+						CheckBoxes[counter].setSelected(false);
+					}
+
+			}
+		});
 		chckbxNewCheckBox.setBounds(10, 7, 111, 23);
+
 		frame.getContentPane().add(chckbxNewCheckBox);
 
 		System.out.println(listOfServers.size());
-		
+
 		forConnectionDistance2 = 115;
 		ForCheckboxDistance2 = 77;
 		forLableIPDistance2 = 53;
@@ -175,6 +191,26 @@ public class TheMostWindow {
 	private void showServers(final Servers server, final int counter, int ForCheckboxDistance2, int forLableIPDistance2,
 			int forConnectionDistance2, int forTypeOfPromptsDistance2, int forEditButtonDistance2) {
 		CheckBoxes[counter] = new JCheckBox(server.getServerName().toString());
+		CheckBoxes[counter].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println(counter);
+				boolean temp = true;
+				for (int counter = 0; counter < listOfServers.size(); counter++) {
+
+					if (CheckBoxes[counter].isSelected() == false) {
+
+						temp = false;
+
+					}
+
+				}
+				chckbxNewCheckBox.setSelected(temp);
+
+				System.out.println(" counter = " + counter);
+
+			}
+
+		});
 
 		CheckBoxes[counter].setBounds(10, ForCheckboxDistance2, 97, 23);
 		//
@@ -219,137 +255,66 @@ public class TheMostWindow {
 		});
 		editButton[counter].setBounds(677, forEditButtonDistance2, 97, 23);
 		frame.getContentPane().add(editButton[counter]);
-//
+		//
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*private void toShowBlock3() {
-		//
-		String pahtForVportal = theDir + "\\" + nameOfCheckBox3;
 
-		checkBox3 = new JCheckBox(nameOfCheckBox3);
-		checkBox3.setBounds(26, 155, 97, 23);
-		frmChangePrompts.getContentPane().add(checkBox3);
-
-		JTextPane nameOfServ3 = new JTextPane();
-		nameOfServ3.setText(massOfIp[2].toString());
-		nameOfServ3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		nameOfServ3.setBackground(SystemColor.menu);
-		nameOfServ3.setBounds(129, 155, 97, 20);
-		frmChangePrompts.getContentPane().add(nameOfServ3);
-		//
-		statusOfServ3 = new JLabel("connection...");
-		statusOfServ3.setFont(new Font("Linux Biolinum G", Font.BOLD, 14));
-		statusOfServ3.setBounds(36, 188, 159, 14);
-		frmChangePrompts.getContentPane().add(statusOfServ3);
-		//
-		promptsForServ3 = new JLabel("");
-		promptsForServ3.setEnabled(true);
-		promptsForServ3.setFont(new Font("Linux Biolinum G", Font.PLAIN, 12));
-		promptsForServ3.setBounds(236, 155, 123, 23);
-		frmChangePrompts.getContentPane().add(promptsForServ3);
-		//
-		Thread thread = new Thread() {
-			public void run() {
-				Connect conn = new Connect(massOfIp[2], pahtForVportal);
-				statusOfServ3.setText(conn.checkConnection());
-				// enabled button in case of connection established
-				if (statusOfServ3.getText().toString().equals("connected")) {
-					statusOfServ3.setForeground(Color.BLUE);
-					buttonPromptsToAutoEnabled = true;
-					buttonPromptsToManualEnable = true;
-					btnSwitch.setEnabled(buttonPromptsToAutoEnabled);
-					buttonSwitchToManual.setEnabled(buttonPromptsToManualEnable);
-					// checking enadled prompts
-					Comparing checkingEnabledPrompts = new Comparing(pahtForVportal);
-					if (checkingEnabledPrompts.compareFiles().equals("automated prompts")) {
-						promptsForServ3.setForeground(Color.BLUE);
-
-					}
-					if (checkingEnabledPrompts.compareFiles().equals("manual prompts")) {
-						promptsForServ3.setForeground(Color.RED);
-
-					}
-					if (checkingEnabledPrompts.compareFiles().equals("unknown")) {
-						promptsForServ3.setForeground(Color.ORANGE);
-
-					}
-
-					promptsForServ3.setText(checkingEnabledPrompts.compareFiles());
-				}
-				if (statusOfServ3.getText().toString().equals("connection error!")) {
-					statusOfServ3.setForeground(Color.RED);
-
-				}
-
-			}
-		};
-		thread.start();
-		// creating directory
-		File directoryForServ1 = new File(pahtForVportal);
-
-		if (!directoryForServ1.exists()) {
-			System.out.println("creating directory ");
-
-			directoryForServ1.mkdir();
-		}
-
-	}
-	
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*
+	 * private void toShowBlock3() { // String pahtForVportal = theDir + "\\" +
+	 * nameOfCheckBox3;
+	 * 
+	 * checkBox3 = new JCheckBox(nameOfCheckBox3); checkBox3.setBounds(26, 155,
+	 * 97, 23); frmChangePrompts.getContentPane().add(checkBox3);
+	 * 
+	 * JTextPane nameOfServ3 = new JTextPane();
+	 * nameOfServ3.setText(massOfIp[2].toString()); nameOfServ3.setFont(new
+	 * Font("Tahoma", Font.PLAIN, 12));
+	 * nameOfServ3.setBackground(SystemColor.menu); nameOfServ3.setBounds(129,
+	 * 155, 97, 20); frmChangePrompts.getContentPane().add(nameOfServ3); //
+	 * statusOfServ3 = new JLabel("connection..."); statusOfServ3.setFont(new
+	 * Font("Linux Biolinum G", Font.BOLD, 14)); statusOfServ3.setBounds(36,
+	 * 188, 159, 14); frmChangePrompts.getContentPane().add(statusOfServ3); //
+	 * promptsForServ3 = new JLabel(""); promptsForServ3.setEnabled(true);
+	 * promptsForServ3.setFont(new Font("Linux Biolinum G", Font.PLAIN, 12));
+	 * promptsForServ3.setBounds(236, 155, 123, 23);
+	 * frmChangePrompts.getContentPane().add(promptsForServ3); // Thread thread
+	 * = new Thread() { public void run() { Connect conn = new
+	 * Connect(massOfIp[2], pahtForVportal);
+	 * statusOfServ3.setText(conn.checkConnection()); // enabled button in case
+	 * of connection established if
+	 * (statusOfServ3.getText().toString().equals("connected")) {
+	 * statusOfServ3.setForeground(Color.BLUE); buttonPromptsToAutoEnabled =
+	 * true; buttonPromptsToManualEnable = true;
+	 * btnSwitch.setEnabled(buttonPromptsToAutoEnabled);
+	 * buttonSwitchToManual.setEnabled(buttonPromptsToManualEnable); // checking
+	 * enadled prompts Comparing checkingEnabledPrompts = new
+	 * Comparing(pahtForVportal); if
+	 * (checkingEnabledPrompts.compareFiles().equals("automated prompts")) {
+	 * promptsForServ3.setForeground(Color.BLUE);
+	 * 
+	 * } if (checkingEnabledPrompts.compareFiles().equals("manual prompts")) {
+	 * promptsForServ3.setForeground(Color.RED);
+	 * 
+	 * } if (checkingEnabledPrompts.compareFiles().equals("unknown")) {
+	 * promptsForServ3.setForeground(Color.ORANGE);
+	 * 
+	 * }
+	 * 
+	 * promptsForServ3.setText(checkingEnabledPrompts.compareFiles()); } if
+	 * (statusOfServ3.getText().toString().equals("connection error!")) {
+	 * statusOfServ3.setForeground(Color.RED);
+	 * 
+	 * }
+	 * 
+	 * } }; thread.start(); // creating directory File directoryForServ1 = new
+	 * File(pahtForVportal);
+	 * 
+	 * if (!directoryForServ1.exists()) {
+	 * System.out.println("creating directory ");
+	 * 
+	 * directoryForServ1.mkdir(); }
+	 * 
+	 * }
+	 * 
+	 */
 
 }
