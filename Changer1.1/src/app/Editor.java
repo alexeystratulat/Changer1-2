@@ -1,5 +1,6 @@
 package app;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,18 +36,13 @@ public class Editor {
 			String line;
 
 			writer = new PrintWriter(pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile"));
-			// System.out.println("forBeep: " + forBeep);
+			
 			while ((line = read.nextLine()) != null) {
 
-				// line = line.replaceAll("file://provisioned/pjac/beep.wav",
-				// forBeep);
-				// line = line.replaceAll("file://provisioned/pjac/",
-				// "file://provisioned/");
-				// line = line.replaceAll("file:///provisioned/pjac/",
-				// "file:///provisioned");
+				
 				 writer.println(line);
 
-				// System.out.println(line);
+				
 
 			}
 			writer.close();
@@ -62,7 +58,7 @@ public class Editor {
 			try {
 				reader.close();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 
@@ -80,18 +76,13 @@ public class Editor {
 			String line;
 
 			writer = new PrintWriter(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
-			// System.out.println("forBeep: " + forBeep);
+			
 			while ((line = read.nextLine()) != null) {
 
-				// line = line.replaceAll("file://provisioned/pjac/beep.wav",
-				// forBeep);
-				// line = line.replaceAll("file://provisioned/pjac/",
-				// "file://provisioned/");
-				// line = line.replaceAll("file:///provisioned/pjac/",
-				// "file:///provisioned");
+				
 				 writer.println(line);
 
-				// System.out.println(line);
+			
 
 			}
 			writer.close();
@@ -114,5 +105,44 @@ public class Editor {
 		}
 
 	}
+	
+	
+public String compareFiles() {
+		
+		File vportalFile = new File(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
+		File vportal_stFile = new File(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
+		File vportal_auFile = new File(pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile"));		
+		
+		
+		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString()+": "+ vportalFile.length());
+		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile").toString()+": "+ vportal_stFile.length());
+		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile").toString()+": "+ vportal_auFile.length());
+	
+
+		if (vportalFile.length() == vportal_stFile.length()) {
+
+			return "manual prompts";
+
+		}
+
+		if (vportalFile.length() == vportal_auFile.length()) {
+
+			return "automated prompts";
+
+		}
+
+		return "unknown";
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
