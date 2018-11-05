@@ -21,7 +21,7 @@ public class TheMostWindow {
 	private ArrayList<Servers> listOfServers;
 	private Connect ckeckConnection;
 	private Editor edit;
-	private WindowForEditing windowForEditing;
+	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
 			forEditButtonDistance2;
 
@@ -236,8 +236,9 @@ public class TheMostWindow {
 		editButton[counter].setEnabled(false);
 		editButton[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				windowForEditing = new WindowForEditing(mainProgramFolder + "\\" + server.getServerName().toString(), resources);
-				windowForEditing.initialize();
+				
+				wind = new WindowForEditing2(mainProgramFolder + "\\" + server.getServerName().toString(), resources, server.getServerName().toString(), selectedItem);
+				wind.initialize();
 				frame.setVisible(false);
 				
 				
