@@ -24,7 +24,8 @@ public class TheMostWindow {
 	private Editor edit;
 	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
-			forEditButtonDistance2;
+			forEditButtonDistance2, forVariable1Distance2, forVariable2Distance2, forVariable3Distance2,
+			forVariable4Distance2, forVariable5Distance2;
 	private JButton switchToManualButton;
 	private JButton switchToAutomationButton;
 	private JFrame frame;
@@ -35,6 +36,11 @@ public class TheMostWindow {
 	private JLabel[] lblconnecton = new JLabel[10];
 	private JLabel[] typeOfprompts = new JLabel[10];
 	private JCheckBox chckbxNewCheckBox;
+	private JLabel[] variables1 = new JLabel[10];
+	private JLabel[] variables2 = new JLabel[10];
+	private JLabel[] variables3 = new JLabel[10];
+	private JLabel[] variables4 = new JLabel[10];
+	private JLabel[] variables5 = new JLabel[10];
 
 	public TheMostWindow(Ini resources, String listName, String resFileName, String selectedItem,
 			ArrayList<Servers> listOfServers, String mainProgramFolder) {
@@ -117,15 +123,27 @@ public class TheMostWindow {
 		forLableIPDistance2 = 53;
 		forTypeOfPromptsDistance2 = 115;
 		forEditButtonDistance2 = 77;
+		forVariable1Distance2 = 45;
+		forVariable2Distance2 = 64;
+		forVariable3Distance2 = 83;
+		forVariable4Distance2 = 102;
+		forVariable5Distance2 = 121;
+
 		for (int counter = 0; counter < listOfServers.size(); counter++) {
 
 			showServers(listOfServers.get(counter), counter, ForCheckboxDistance2, forLableIPDistance2,
-					forConnectionDistance2, forTypeOfPromptsDistance2, forEditButtonDistance2);
+					forConnectionDistance2, forTypeOfPromptsDistance2, forEditButtonDistance2, forVariable1Distance2,
+					forVariable2Distance2, forVariable3Distance2, forVariable4Distance2, forVariable5Distance2);
 			ForCheckboxDistance2 += 100;
 			forLableIPDistance2 += 100;
 			forConnectionDistance2 += 100;
 			forTypeOfPromptsDistance2 += 100;
 			forEditButtonDistance2 += 100;
+			forVariable1Distance2 += 100;
+			forVariable2Distance2 += 100;
+			forVariable3Distance2 += 100;
+			forVariable4Distance2 += 100;
+			forVariable5Distance2 += 100;
 
 			try {
 				Thread.sleep(50);
@@ -231,7 +249,9 @@ public class TheMostWindow {
 
 	//
 	private void showServers(final Servers server, final int counter, int ForCheckboxDistance2, int forLableIPDistance2,
-			int forConnectionDistance2, int forTypeOfPromptsDistance2, int forEditButtonDistance2) {
+			int forConnectionDistance2, int forTypeOfPromptsDistance2, int forEditButtonDistance2,
+			int forVariable1Distance2, int forVariable2Distance2, int forVariable3Distance2, int forVariable4Distance2,
+			int forVariable5Distance2) {
 		CheckBoxes[counter] = new JCheckBox(server.getServerName().toString());
 		CheckBoxes[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -254,10 +274,38 @@ public class TheMostWindow {
 		//
 		labels[counter] = new JLabel(server.getIpAdress().toString());
 		labels[counter].setBounds(30, forLableIPDistance2, 101, 14);
+		//
 
+		variables1[counter] = new JLabel("");
+		variables1[counter].setBounds(270, forVariable1Distance2, 450, 12);
+		frame.getContentPane().add(variables1[counter]);
+		//
+		variables2[counter] = new JLabel("");
+		variables2[counter].setBounds(270, forVariable2Distance2, 450, 12);
+		frame.getContentPane().add(variables2[counter]);
+		//
+		variables3[counter] = new JLabel("");
+		variables3[counter].setBounds(270, forVariable3Distance2, 450, 12);
+		frame.getContentPane().add(variables3[counter]);
+		//
+		variables4[counter] = new JLabel("");
+		variables4[counter].setBounds(270, forVariable4Distance2, 450, 12);
+		frame.getContentPane().add(variables4[counter]);
+		//
+		variables5[counter] = new JLabel("");
+		variables5[counter].setBounds(270, forVariable5Distance2, 450, 12);
+		frame.getContentPane().add(variables5[counter]);
+		//
+		
+		
+		
+		
+		
+		
 		frame.getContentPane().add(CheckBoxes[counter]);
 		//
 		frame.getContentPane().add(labels[counter]);
+
 		//
 		lblconnecton[counter] = new JLabel("connecton...");
 		lblconnecton[counter].setBounds(30, forConnectionDistance2, 131, 14);
@@ -286,6 +334,24 @@ public class TheMostWindow {
 					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
 							server.getIpAdress().toString());
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
+					
+					//
+					
+					
+					
+					
+					
+					
+					
+				}
+
+				if (typeOfprompts[counter].getText().toString().equals("manual prompts")) {
+					typeOfprompts[counter].setForeground(Color.RED);
+
+				}
+				if (typeOfprompts[counter].getText().toString().equals("automated prompts")) {
+					typeOfprompts[counter].setForeground(Color.BLUE);
+
 				}
 
 			}
