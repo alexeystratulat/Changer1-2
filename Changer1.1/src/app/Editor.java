@@ -27,7 +27,11 @@ public class Editor {
 		this.pathToFile = pathToFile;
 		this.resources = resources;
 		this.ServerIP = ServerIP;
-		variableForManual = "http://" + ServerIP + "/prompts/beep.wav";
+		variableForManual = resources.get("manual", "variable4").toString()+"=http://" + ServerIP + resources.get("manual", "variable3").toString();
+System.out.println(resources.get("manual", "variable4").toString()+"=http://" + ServerIP + resources.get("manual", "variable3").toString());
+System.out.println(resources.get("automated", "variable3"));
+
+
 
 	}
 
@@ -51,6 +55,7 @@ public class Editor {
 				// checking for mistake
 				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
 				line = line.replaceAll(resources.get("check", "mistake2"), resources.get("automated", "variable2"));
+				line = line.replaceAll(resources.get("check", "mistake3"), resources.get("automated", "variable3"));
 
 				writer.println(line);
 
@@ -92,6 +97,14 @@ public class Editor {
 				line = line.replaceAll(resources.get("automated", "variable1"), resources.get("manual", "variable1"));
 				line = line.replaceAll(resources.get("automated", "variable2"), resources.get("manual", "variable2"));
 				line = line.replaceAll(resources.get("automated", "variable3"), variableForManual);
+				
+				
+				// checking for mistake
+				line = line.replaceAll(resources.get("check", "mistake3"), variableForManual);
+				
+				
+				
+				
 
 				writer.println(line);
 
