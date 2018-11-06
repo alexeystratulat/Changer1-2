@@ -224,7 +224,7 @@ public class TheMostWindow {
 				lblconnecton[counter].setText(ckeckConnection.checkConnection());
 				if (lblconnecton[counter].getText().toString().equals("connected")) {
 					editButton[counter].setEnabled(true);
-					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources);
+					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,server.getIpAdress().toString());
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
 				}
 

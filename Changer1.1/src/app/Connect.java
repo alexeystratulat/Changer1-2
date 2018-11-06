@@ -109,7 +109,7 @@ public class Connect {
 		}
 
 		
-		Editor edit = new Editor(mainProgramFolder + "\\" +server.getServerName().toString(),resources);
+		Editor edit = new Editor(mainProgramFolder + "\\" +server.getServerName().toString(),resources,server.getIpAdress().toString());
 		
 		System.out.println("Editor for "+mainProgramFolder + "\\" +server.getServerName().toString()+" is started" );
 		

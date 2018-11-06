@@ -89,6 +89,7 @@ public class WindowForEditing2 {
 		
 		btnApply = new JButton("apply");
 		btnApply.setBounds(385, 655, 170, 23);
+		btnApply.setEnabled(false);
 		frame.getContentPane().add(btnApply);
 		frame.setVisible(true);
 		//

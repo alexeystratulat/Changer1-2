@@ -12,23 +12,26 @@ import org.ini4j.Ini;
 
 public class Editor {
 	private String pathToFile;
+	private String ServerIP;
+	private String variableForManual = null;
 	private Ini resources;
 	private PrintWriter writer = null;
 	private FileReader reader = null;
 	private Scanner read;
-////////////
-	public Editor(String pathToFile, Ini resources) {
+
+	////////////
+	public Editor(String pathToFile, Ini resources, String ServerIP) {
 		this.pathToFile = pathToFile;
 		this.resources = resources;
-
-		System.out.println(
-				pathToFile + "constructor Editor          " + resources.get("path", "nameOfConfigFile").toString());
-
+		this.ServerIP = ServerIP;
+		variableForManual = "http://" + ServerIP + "/prompts/beep.wav";
+		
 	}
 
 	public void makingVportal_au() {
-		
+
 		try {
+			
 
 			reader = new FileReader(pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString());
 
@@ -36,13 +39,20 @@ public class Editor {
 			String line;
 
 			writer = new PrintWriter(pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile"));
-			
+
 			while ((line = read.nextLine()) != null) {
 
+				line = line.replaceAll(resources.get("manual", "variable1"), resources.get("automated", "variable1"));
+				line = line.replaceAll(resources.get("manual", "variable2"), resources.get("automated", "variable2"));
+				line = line.replaceAll(variableForManual, resources.get("automated", "variable3"));
 				
-				 writer.println(line);
+				
+				
+				
+				//checking for mistake
+				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
 
-				
+				writer.println(line);
 
 			}
 			writer.close();
@@ -54,11 +64,11 @@ public class Editor {
 					+ resources.get("path", "nameOfStandartConfigFile"));
 			writer.close();
 			read.close();
-			
+
 			try {
 				reader.close();
 			} catch (IOException e1) {
-				
+
 				e1.printStackTrace();
 			}
 
@@ -76,13 +86,14 @@ public class Editor {
 			String line;
 
 			writer = new PrintWriter(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
-			
+
 			while ((line = read.nextLine()) != null) {
 
-				
-				 writer.println(line);
+				line = line.replaceAll(resources.get("automated", "variable1"), resources.get("manual", "variable1"));
+				line = line.replaceAll(resources.get("automated", "variable2"), resources.get("manual", "variable2"));
+				line = line.replaceAll(resources.get("automated", "variable3"), variableForManual);
 
-			
+				writer.println(line);
 
 			}
 			writer.close();
@@ -94,7 +105,7 @@ public class Editor {
 					+ resources.get("path", "nameOfStandartConfigFile"));
 			writer.close();
 			read.close();
-			
+
 			try {
 				reader.close();
 			} catch (IOException e1) {
@@ -105,19 +116,19 @@ public class Editor {
 		}
 
 	}
-	
-	
-public String compareFiles() {
-		
-		File vportalFile = new File(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
+
+	public String compareFiles() {
+
+		File vportalFile = new File(pathToFile + "\\" + resources.get("path", "nameOfConfigFile"));
 		File vportal_stFile = new File(pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile"));
-		File vportal_auFile = new File(pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile"));		
-		
-		
-		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString()+": "+ vportalFile.length());
-		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfStandartConfigFile").toString()+": "+ vportal_stFile.length());
-		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile").toString()+": "+ vportal_auFile.length());
-	
+		File vportal_auFile = new File(pathToFile + "\\" + resources.get("path", "nameOfAlternativeConfigFile"));
+
+		System.out.println("Comparing: " + pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString()
+				+ ": " + vportalFile.length());
+		System.out.println("Comparing: " + pathToFile + "\\"
+				+ resources.get("path", "nameOfStandartConfigFile").toString() + ": " + vportal_stFile.length());
+		System.out.println("Comparing: " + pathToFile + "\\"
+				+ resources.get("path", "nameOfAlternativeConfigFile").toString() + ": " + vportal_auFile.length());
 
 		if (vportalFile.length() == vportal_stFile.length()) {
 
@@ -134,15 +145,5 @@ public String compareFiles() {
 		return "unknown";
 
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
