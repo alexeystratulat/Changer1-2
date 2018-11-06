@@ -30,6 +30,7 @@ public class CreatingResourcesFiles {
 			 writer.println("Username = Username");
 			 writer.println("Password = Password");
 			 writer.println("Path = /cygdrive/d/Changer/list.ini");
+			 writer.println("PathResources = /cygdrive/d/Changer/resources.ini");
 			 
 			 
 			 

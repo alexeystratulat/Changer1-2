@@ -119,7 +119,7 @@ public class ResourceServerWindow {
 
 				Connect servToGetResourses = new Connect(resources.get("auth", "IPaddres"),
 						resources.get("auth", "Username"), resources.get("auth", "Password"),
-						resources.get("auth", "Path"), mainProgramFolder + "\\" + listName);
+						resources.get("auth", "Path"),resources.get("auth", "PathResources"), mainProgramFolder + "\\" + listName,mainProgramFolder + "\\" + resFileName,resources);
 				servToGetResourses.downloadingSourseFile();
 
 				WindowOne w1 = new WindowOne(resources, listName, resFileName, mainProgramFolder);

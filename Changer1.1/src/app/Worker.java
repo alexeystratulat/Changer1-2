@@ -13,8 +13,14 @@ public class Worker {
 	static String resFileName = "resources.ini";
 	static String mainProgramFolder = "C:\\Changer1.1";
 
-	public static void main(String[] args) throws InvalidFileFormatException, IOException {
-		resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));
+	public static void main(String[] args) throws IOException {
+		
+		
+		try {
+			resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
 		
 		//listFile - env ip file 
 		File listFile = new File(mainProgramFolder + "\\" + listName);

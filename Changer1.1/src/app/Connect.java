@@ -14,6 +14,8 @@ public class Connect {
 	private String username;
 	private String password;
 	private String path;
+	private String pathForRes;
+	private String resFileName;
 	private String pathForList;
 	private Servers server;
 	private String mainProgramFolder;
@@ -21,12 +23,15 @@ public class Connect {
 
 	private static int port = 22;
 
-	public Connect(String ipAddress, String username, String password, String path, String pathForList) {
+	public Connect(String ipAddress, String username, String password, String path,String pathForRes, String pathForList,String resFileName,Ini resources) {
 		this.ipAddress = ipAddress;
 		this.username = username;
 		this.password = password;
 		this.path = path;
 		this.pathForList = pathForList;
+		this.pathForRes = pathForRes;
+		this.resFileName = resFileName;
+		this.resources = resources;
 
 	}
 
@@ -46,6 +51,8 @@ public class Connect {
 		System.out.println(password);
 		System.out.println(path);
 		System.out.println(pathForList);
+		System.out.println(resFileName);
+		//System.out.println(resources.get("auth", "PathResources").toString() + "  "+ resFileName );
 
 		try {
 
@@ -60,9 +67,19 @@ public class Connect {
 			sftpChannel.connect();
 			System.out.println(ipAddress.toString() + " SFTP Channel created.");
 
-			File file = new File(pathForList);
-			file.createNewFile();
-			sftpChannel.get(path, pathForList);
+			//File file = new File(pathForList);
+			//file.createNewFile();
+			//sftpChannel.get(path, pathForList);
+			//System.out.println(resources.get("path", "pathForRes") + "  "+ resFileName );
+			
+			sftpChannel.get(resources.get("auth", "Path"), pathForList);
+			
+			
+			
+			sftpChannel.get(resources.get("auth", "PathResources"),resFileName);
+			
+			
+			
 
 			System.out.println(ipAddress.toString() + path + " -----> " + pathForList);
 
