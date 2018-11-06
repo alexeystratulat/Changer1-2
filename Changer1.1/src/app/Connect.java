@@ -30,7 +30,7 @@ public class Connect {
 
 	}
 
-	public Connect(Servers server, String username, String password, String mainProgramFolder,Ini resources) {
+	public Connect(Servers server, String username, String password, String mainProgramFolder, Ini resources) {
 		this.server = server;
 		this.username = username;
 		this.password = password;
@@ -82,8 +82,9 @@ public class Connect {
 		String error = "connection error!";
 		try {
 
-			System.out.println("Connecting to server: "+"username= " + username +" server= " + server.getIpAdress()+" password= " + password);
-			
+			System.out.println("Connecting to server: " + "username= " + username + " server= " + server.getIpAdress()
+					+ " password= " + password);
+
 			JSch jsch = new JSch();
 			Session session = jsch.getSession(username, server.getIpAdress(), port);
 			session.setPassword(password);
@@ -96,10 +97,11 @@ public class Connect {
 			sftpChannel.connect();
 			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
 			//
-			
+
 			CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
 			dir.createDirForConfigOfServer(server.getServerName().toString());
-			sftpChannel.get(resources.get("path", "pathForConfigFile"), mainProgramFolder + "\\" +server.getServerName().toString());
+			sftpChannel.get(resources.get("path", "pathForConfigFile"),
+					mainProgramFolder + "\\" + server.getServerName().toString());
 
 			sftpChannel.disconnect();
 			session.disconnect();
@@ -108,12 +110,13 @@ public class Connect {
 			return error;
 		}
 
-		
-		Editor edit = new Editor(mainProgramFolder + "\\" +server.getServerName().toString(),resources,server.getIpAdress().toString());
-		
-		System.out.println("Editor for "+mainProgramFolder + "\\" +server.getServerName().toString()+" is started" );
-		
-		edit.makingVportal_st( );
+		Editor edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
+				server.getIpAdress().toString());
+
+		System.out
+				.println("Editor for " + mainProgramFolder + "\\" + server.getServerName().toString() + " is started");
+
+		edit.makingVportal_st();
 		edit.makingVportal_au();
 
 		return done;
@@ -129,6 +132,75 @@ public class Connect {
 		return null;
 	}
 
+	public String setManual() {
 
+		String done = "connected";
+		String error = "connection error!";
+		try {
+
+			System.out.println("Connecting to server: " + "username= " + username + " server= " + server.getIpAdress()
+					+ " password= " + password);
+
+			JSch jsch = new JSch();
+			Session session = jsch.getSession(username, server.getIpAdress(), port);
+			session.setPassword(password);
+			session.setConfig("StrictHostKeyChecking", " no");
+			System.out.println(server.getIpAdress().toString() + " Establishing Connection...");
+			session.connect();
+			System.out.println(server.getIpAdress().toString() + " Connection established.");
+
+			ChannelSftp sftpChannel = (ChannelSftp) session.openChannel("sftp");
+			sftpChannel.connect();
+			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
+			//
+
+			CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
+			dir.createDirForConfigOfServer(server.getServerName().toString());
+			sftpChannel.get(resources.get("path", "pathForConfigFile"),
+					mainProgramFolder + "\\" + server.getServerName().toString());
+
+			sftpChannel.disconnect();
+			session.disconnect();
+
+		} catch (Exception e) {
+			return error;
+		}
+		return done;
+	}
+
+	public String setAutomation() {
+
+		String done = "connected";
+		String error = "connection error!";
+		try {
+
+			System.out.println("Connecting to server: " + "username= " + username + " server= " + server.getIpAdress()
+					+ " password= " + password);
+
+			JSch jsch = new JSch();
+			Session session = jsch.getSession(username, server.getIpAdress(), port);
+			session.setPassword(password);
+			session.setConfig("StrictHostKeyChecking", " no");
+			System.out.println(server.getIpAdress().toString() + " Establishing Connection...");
+			session.connect();
+			System.out.println(server.getIpAdress().toString() + " Connection established.");
+
+			ChannelSftp sftpChannel = (ChannelSftp) session.openChannel("sftp");
+			sftpChannel.connect();
+			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
+			//
+System.out.println(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfAlternativeConfigFile"));
+System.out.println(resources.get("path", "pathForConfigFile"));
+
+			//sftpChannel.put(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfAlternativeConfigFile"), resources.get("path", "pathForConfigFile"));
+
+			sftpChannel.disconnect();
+			session.disconnect();
+
+		} catch (Exception e) {
+			return error;
+		}
+		return done;
+	}
 
 }

@@ -20,6 +20,7 @@ public class TheMostWindow {
 	private String selectedItem; // name of choisen combobox
 	private ArrayList<Servers> listOfServers;
 	private Connect ckeckConnection;
+	private Connect toChangePrompts;
 	private Editor edit;
 	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
@@ -164,7 +165,7 @@ public class TheMostWindow {
 		JButton switchToManualAutomation = new JButton("Switch to automation");
 		switchToManualAutomation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				
 				System.out.println("Bytton is typed");
 
 			}
