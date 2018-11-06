@@ -276,24 +276,24 @@ public class TheMostWindow {
 		labels[counter].setBounds(30, forLableIPDistance2, 101, 14);
 		//
 
-		variables1[counter] = new JLabel("");
-		variables1[counter].setBounds(270, forVariable1Distance2, 450, 12);
+		variables1[counter] = new JLabel("1");
+		variables1[counter].setBounds(280, forVariable1Distance2, 450, 12);
 		frame.getContentPane().add(variables1[counter]);
 		//
-		variables2[counter] = new JLabel("");
-		variables2[counter].setBounds(270, forVariable2Distance2, 450, 12);
+		variables2[counter] = new JLabel("2");
+		variables2[counter].setBounds(280, forVariable2Distance2, 450, 12);
 		frame.getContentPane().add(variables2[counter]);
 		//
-		variables3[counter] = new JLabel("");
-		variables3[counter].setBounds(270, forVariable3Distance2, 450, 12);
+		variables3[counter] = new JLabel("3");
+		variables3[counter].setBounds(280, forVariable3Distance2, 450, 12);
 		frame.getContentPane().add(variables3[counter]);
 		//
-		variables4[counter] = new JLabel("");
-		variables4[counter].setBounds(270, forVariable4Distance2, 450, 12);
+		variables4[counter] = new JLabel("4");
+		variables4[counter].setBounds(280, forVariable4Distance2, 450, 12);
 		frame.getContentPane().add(variables4[counter]);
 		//
-		variables5[counter] = new JLabel("");
-		variables5[counter].setBounds(270, forVariable5Distance2, 450, 12);
+		variables5[counter] = new JLabel("5");
+		variables5[counter].setBounds(280, forVariable5Distance2, 450, 12);
 		frame.getContentPane().add(variables5[counter]);
 		//
 		
@@ -337,6 +337,12 @@ public class TheMostWindow {
 					
 					//
 					
+					
+					variables1[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable1").toString()));
+					variables2[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable2").toString()));
+					variables3[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable3").toString()));
+					variables4[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable4").toString()));
+					variables5[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable5").toString()));
 					
 					
 					

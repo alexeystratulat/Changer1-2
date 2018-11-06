@@ -9,6 +9,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import org.ini4j.Ini;
+import org.ini4j.InvalidFileFormatException;
+import org.ini4j.Profile.Section;
 
 public class Editor {
 	private String pathToFile;
@@ -18,6 +20,7 @@ public class Editor {
 	private PrintWriter writer = null;
 	private FileReader reader = null;
 	private Scanner read;
+	private Ini showingVariables;
 
 	////////////
 	public Editor(String pathToFile, Ini resources, String ServerIP) {
@@ -25,13 +28,12 @@ public class Editor {
 		this.resources = resources;
 		this.ServerIP = ServerIP;
 		variableForManual = "http://" + ServerIP + "/prompts/beep.wav";
-		
+
 	}
 
 	public void makingVportal_au() {
 
 		try {
-			
 
 			reader = new FileReader(pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString());
 
@@ -45,11 +47,8 @@ public class Editor {
 				line = line.replaceAll(resources.get("manual", "variable1"), resources.get("automated", "variable1"));
 				line = line.replaceAll(resources.get("manual", "variable2"), resources.get("automated", "variable2"));
 				line = line.replaceAll(variableForManual, resources.get("automated", "variable3"));
-				
-				
-				
-				
-				//checking for mistake
+
+				// checking for mistake
 				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
 				line = line.replaceAll(resources.get("check", "mistake2"), resources.get("automated", "variable2"));
 
@@ -144,6 +143,35 @@ public class Editor {
 		}
 
 		return "unknown";
+
+	}
+
+	public String toShowVariables(int counter, String key) {
+		try {
+			showingVariables = new Ini(
+					new File(pathToFile + "\\" + resources.get("path", "nameOfConfigFile").toString()));
+		} catch (InvalidFileFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (String sectionName : showingVariables.keySet()) {
+
+			Section section = showingVariables.get(sectionName.toString());
+
+			for (String optionKey : section.keySet()) {
+				if (optionKey.toString().equals(key)) {
+					return optionKey.toString() + " = " + section.get(optionKey);
+				}
+
+			}
+
+		}
+
+		return null;
 
 	}
 
