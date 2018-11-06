@@ -154,14 +154,10 @@ public class Connect {
 			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
 			//
 
-			CreatingDirectory dir = new CreatingDirectory(mainProgramFolder);
-			dir.createDirForConfigOfServer(server.getServerName().toString());
-			sftpChannel.get(resources.get("path", "pathForConfigFile"),
-					mainProgramFolder + "\\" + server.getServerName().toString());
-
-			sftpChannel.disconnect();
-			session.disconnect();
-
+			sftpChannel.put(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfStandartConfigFile"), resources.get("path", "pathForConfigFile"));
+			
+			
+			
 		} catch (Exception e) {
 			return error;
 		}
@@ -192,7 +188,7 @@ public class Connect {
 System.out.println(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfAlternativeConfigFile"));
 System.out.println(resources.get("path", "pathForConfigFile"));
 
-			//sftpChannel.put(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfAlternativeConfigFile"), resources.get("path", "pathForConfigFile"));
+			sftpChannel.put(mainProgramFolder + "\\" + server.getServerName().toString()+ "\\" + resources.get("path", "nameOfAlternativeConfigFile"), resources.get("path", "pathForConfigFile"));
 
 			sftpChannel.disconnect();
 			session.disconnect();

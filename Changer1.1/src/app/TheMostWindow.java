@@ -25,7 +25,8 @@ public class TheMostWindow {
 	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
 			forEditButtonDistance2;
-
+	private JButton switchToManualButton;
+	private JButton switchToAutomationButton;
 	private JFrame frame;
 
 	private JButton[] editButton = new JButton[10];
@@ -151,27 +152,79 @@ public class TheMostWindow {
 
 		frame.setVisible(true);
 
-		JButton switchToManualButton = new JButton("Switch to manual");
+		switchToManualButton = new JButton("Switch to manual");
 		switchToManualButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
+				for (int counter = 0; counter < listOfServers.size(); counter++) {
+
+					if (CheckBoxes[counter].isSelected() == true) {
+
+						toChangePrompts = new Connect(listOfServers.get(counter), resources.get("auth", "Username"),
+								resources.get("auth", "Password"), mainProgramFolder, resources);
+
+						toChangePrompts.setManual();
+
+					}
+
+				}
+
+				frame.setVisible(false);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				TheMostWindow most = new TheMostWindow(resources, listName, resFileName, selectedItem, listOfServers,
+						mainProgramFolder);
+				most.initialize();
 
 				System.out.println("Bytton is typed");
 
 			}
 		});
 		switchToManualButton.setBounds(185, 655, 170, 23);
+		switchToManualButton.setEnabled(false);
 		frame.getContentPane().add(switchToManualButton);
 
-		JButton switchToManualAutomation = new JButton("Switch to automation");
-		switchToManualAutomation.addActionListener(new ActionListener() {
+		switchToAutomationButton = new JButton("Switch to automation");
+		switchToAutomationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
+				for (int counter = 0; counter < listOfServers.size(); counter++) {
+
+					if (CheckBoxes[counter].isSelected() == true) {
+
+						toChangePrompts = new Connect(listOfServers.get(counter), resources.get("auth", "Username"),
+								resources.get("auth", "Password"), mainProgramFolder, resources);
+
+						toChangePrompts.setAutomation();
+
+					}
+
+				}
+
+				frame.setVisible(false);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				TheMostWindow most = new TheMostWindow(resources, listName, resFileName, selectedItem, listOfServers,
+						mainProgramFolder);
+				most.initialize();
+
 				System.out.println("Bytton is typed");
 
 			}
 		});
-		switchToManualAutomation.setBounds(385, 655, 170, 23);
-		frame.getContentPane().add(switchToManualAutomation);
+		switchToAutomationButton.setBounds(385, 655, 170, 23);
+		switchToAutomationButton.setEnabled(false);
+		frame.getContentPane().add(switchToAutomationButton);
 
 	}
 
@@ -225,7 +278,12 @@ public class TheMostWindow {
 				lblconnecton[counter].setText(ckeckConnection.checkConnection());
 				if (lblconnecton[counter].getText().toString().equals("connected")) {
 					editButton[counter].setEnabled(true);
-					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,server.getIpAdress().toString());
+
+					switchToAutomationButton.setEnabled(true);
+					switchToManualButton.setEnabled(true);
+
+					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
+							server.getIpAdress().toString());
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
 				}
 
@@ -237,19 +295,22 @@ public class TheMostWindow {
 		editButton[counter].setEnabled(false);
 		editButton[counter].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				wind = new WindowForEditing2(mainProgramFolder + "\\" + server.getServerName().toString(),server.getServerName().toString(),resources,  listName,  resFileName,selectedItem, listOfServers, mainProgramFolder);
+
+				wind = new WindowForEditing2(mainProgramFolder + "\\" + server.getServerName().toString(),
+						server.getServerName().toString(), resources, listName, resFileName, selectedItem,
+						listOfServers, mainProgramFolder);
 				wind.initialize();
 				frame.setVisible(false);
-				
-				
+
 				System.out.println("BUTTON TYPED");
 				System.out.println(CheckBoxes[counter].isSelected());
 			}
 		});
 		editButton[counter].setBounds(677, forEditButtonDistance2, 97, 23);
 		frame.getContentPane().add(editButton[counter]);
+
 		//
+
 	}
 
 }

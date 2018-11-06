@@ -51,6 +51,7 @@ public class Editor {
 				
 				//checking for mistake
 				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
+				line = line.replaceAll(resources.get("check", "mistake2"), resources.get("automated", "variable2"));
 
 				writer.println(line);
 
