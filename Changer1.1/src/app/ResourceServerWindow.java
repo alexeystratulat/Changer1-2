@@ -124,7 +124,15 @@ public class ResourceServerWindow {
 
 				WindowOne w1 = new WindowOne(resources, listName, resFileName, mainProgramFolder);
 
-				w1.initialize();
+				//w1.initialize();
+				
+				Worker restartapp = new Worker();
+				try {
+					restartapp.main(null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				frmFillRequiredValues.setVisible(false);
 			}

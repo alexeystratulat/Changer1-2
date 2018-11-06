@@ -296,12 +296,7 @@ public class TheMostWindow {
 		variables5[counter].setBounds(280, forVariable5Distance2, 450, 12);
 		frame.getContentPane().add(variables5[counter]);
 		//
-		
-		
-		
-		
-		
-		
+
 		frame.getContentPane().add(CheckBoxes[counter]);
 		//
 		frame.getContentPane().add(labels[counter]);
@@ -334,21 +329,20 @@ public class TheMostWindow {
 					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
 							server.getIpAdress().toString());
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
-					
+
 					//
-					
-					
-					variables1[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable1").toString()));
-					variables2[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable2").toString()));
-					variables3[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable3").toString()));
-					variables4[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable4").toString()));
-					variables5[counter].setText(edit.toShowVariables(counter,resources.get("variables", "variable5").toString()));
-					
-					
-					
-					
-					
-					
+
+					variables1[counter]
+							.setText(edit.toShowVariables(counter, resources.get("variables", "variable1").toString()));
+					variables2[counter]
+							.setText(edit.toShowVariables(counter, resources.get("variables", "variable2").toString()));
+					variables3[counter]
+							.setText(edit.toShowVariables(counter, resources.get("variables", "variable3").toString()));
+					variables4[counter]
+							.setText(edit.toShowVariables(counter, resources.get("variables", "variable4").toString()));
+					variables5[counter]
+							.setText(edit.toShowVariables(counter, resources.get("variables", "variable5").toString()));
+
 				}
 
 				if (typeOfprompts[counter].getText().toString().equals("manual prompts")) {

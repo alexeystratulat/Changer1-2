@@ -50,7 +50,7 @@ System.out.println(resources.get("automated", "variable3"));
 
 				line = line.replaceAll(resources.get("manual", "variable1"), resources.get("automated", "variable1"));
 				line = line.replaceAll(resources.get("manual", "variable2"), resources.get("automated", "variable2"));
-				line = line.replaceAll(variableForManual, resources.get("automated", "variable3"));
+			//	line = line.replaceAll(variableForManual, resources.get("automated", "variable3"));
 
 				// checking for mistake
 				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
