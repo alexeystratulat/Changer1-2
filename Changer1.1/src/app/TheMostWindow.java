@@ -276,23 +276,23 @@ public class TheMostWindow {
 		labels[counter].setBounds(30, forLableIPDistance2, 101, 14);
 		//
 
-		variables1[counter] = new JLabel("1");
+		variables1[counter] = new JLabel("");
 		variables1[counter].setBounds(280, forVariable1Distance2, 450, 12);
 		frame.getContentPane().add(variables1[counter]);
 		//
-		variables2[counter] = new JLabel("2");
+		variables2[counter] = new JLabel("");
 		variables2[counter].setBounds(280, forVariable2Distance2, 450, 12);
 		frame.getContentPane().add(variables2[counter]);
 		//
-		variables3[counter] = new JLabel("3");
+		variables3[counter] = new JLabel("");
 		variables3[counter].setBounds(280, forVariable3Distance2, 450, 12);
 		frame.getContentPane().add(variables3[counter]);
 		//
-		variables4[counter] = new JLabel("4");
+		variables4[counter] = new JLabel("");
 		variables4[counter].setBounds(280, forVariable4Distance2, 450, 12);
 		frame.getContentPane().add(variables4[counter]);
 		//
-		variables5[counter] = new JLabel("5");
+		variables5[counter] = new JLabel("");
 		variables5[counter].setBounds(280, forVariable5Distance2, 450, 12);
 		frame.getContentPane().add(variables5[counter]);
 		//
@@ -311,7 +311,7 @@ public class TheMostWindow {
 		lblconnecton[counter].setBounds(30, forConnectionDistance2, 131, 14);
 		lblconnecton[counter].setForeground(Color.BLUE);
 		//
-		typeOfprompts[counter] = new JLabel("typeOfprompts...!");
+		typeOfprompts[counter] = new JLabel("loading...!");
 		typeOfprompts[counter].setBounds(150, forTypeOfPromptsDistance2, 131, 14);
 		//
 		frame.getContentPane().add(lblconnecton[counter]);
