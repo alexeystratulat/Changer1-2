@@ -61,6 +61,7 @@ public class WindowForEditing2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle(selectedItem + "  "+ serverName);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 764, 629);

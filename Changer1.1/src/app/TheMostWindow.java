@@ -55,6 +55,7 @@ public class TheMostWindow {
 		frame.setBounds(100, 100, 800, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 
 		JLabel lblNewLabel = new JLabel(selectedItem);
 		lblNewLabel.setBounds(338, 11, 177, 14);
