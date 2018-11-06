@@ -91,6 +91,7 @@ public class WindowForEditing2 {
 		btnApply.setBounds(385, 655, 170, 23);
 		frame.getContentPane().add(btnApply);
 		frame.setVisible(true);
+		//
 		show();
 
 	}
