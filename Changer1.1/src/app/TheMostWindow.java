@@ -146,7 +146,7 @@ public class TheMostWindow {
 			forVariable5Distance2 += 100;
 
 			try {
-				Thread.sleep(50);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
