@@ -15,7 +15,7 @@ public class Worker {
 
 	public static void main(String[] args) throws IOException {
 		
-		
+		//
 		try {
 			resources = new Ini(new File(mainProgramFolder + "\\" + resFileName));
 		} catch (IOException e) {
