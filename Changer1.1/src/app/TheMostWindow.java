@@ -21,6 +21,7 @@ public class TheMostWindow {
 	private ArrayList<Servers> listOfServers;
 	private Connect ckeckConnection;
 	private Connect toChangePrompts;
+	private RestartingServ restartingSer;
 	private Editor edit;
 	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
@@ -28,6 +29,7 @@ public class TheMostWindow {
 			forVariable4Distance2, forVariable5Distance2;
 	private JButton switchToManualButton;
 	private JButton switchToAutomationButton;
+	private JButton restartButton;
 	private JFrame frame;
 
 	private JButton[] editButton = new JButton[10];
@@ -244,6 +246,45 @@ public class TheMostWindow {
 		switchToAutomationButton.setBounds(385, 655, 170, 23);
 		switchToAutomationButton.setEnabled(false);
 		frame.getContentPane().add(switchToAutomationButton);
+		
+		
+		restartButton = new JButton("restart");
+		restartButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				for (int counter = 0; counter < listOfServers.size(); counter++) {
+
+					if (CheckBoxes[counter].isSelected() == true) {
+
+						restartingSer = new RestartingServ(listOfServers.get(counter), resources.get("auth", "Username"),resources.get("auth", "Password"), mainProgramFolder, resources);
+
+						restartingSer.restarting();
+
+					}
+
+				}
+
+				frame.setVisible(false);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				TheMostWindow most = new TheMostWindow(resources, listName, resFileName, selectedItem, listOfServers,
+						mainProgramFolder);
+				most.initialize();
+
+				System.out.println("Bytton is typed");
+
+			}
+		});
+		restartButton.setBounds(585, 655, 80, 23);
+		restartButton.setEnabled(false);
+		frame.getContentPane().add(restartButton);
+		
+		
 
 	}
 
@@ -325,6 +366,7 @@ public class TheMostWindow {
 
 					switchToAutomationButton.setEnabled(true);
 					switchToManualButton.setEnabled(true);
+					restartButton.setEnabled(true);
 
 					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
 							server.getIpAdress().toString());

@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 
 import org.ini4j.Ini;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 public class WindowForEditing2 {
 
@@ -120,5 +121,4 @@ public class WindowForEditing2 {
 		}
 
 	}
-
 }
