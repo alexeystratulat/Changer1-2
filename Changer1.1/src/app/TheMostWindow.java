@@ -22,6 +22,7 @@ public class TheMostWindow {
 	private Connect ckeckConnection;
 	private Connect toChangePrompts;
 	private RestartingServ restartingSer;
+	private RestartingServ servStatus,servStatus2;
 	private Editor edit;
 	private WindowForEditing2 wind;
 	private int ForCheckboxDistance2, forLableIPDistance2, forConnectionDistance2, forTypeOfPromptsDistance2,
@@ -37,6 +38,10 @@ public class TheMostWindow {
 	private JLabel[] labels = new JLabel[10];
 	private JLabel[] lblconnecton = new JLabel[10];
 	private JLabel[] typeOfprompts = new JLabel[10];
+	private JLabel[] nameForStatusServer1 = new JLabel[10];
+	private JLabel[] nameForStatusServer2 = new JLabel[10];
+	private JLabel[] statusServer1 = new JLabel[10];
+	private JLabel[] statusServer2 = new JLabel[10];
 	private JCheckBox chckbxNewCheckBox;
 	private JLabel[] variables1 = new JLabel[10];
 	private JLabel[] variables2 = new JLabel[10];
@@ -170,6 +175,10 @@ public class TheMostWindow {
 		});
 		button.setBounds(685, 655, 89, 23);
 		frame.getContentPane().add(button);
+		
+	
+		
+		
 
 		frame.setVisible(true);
 
@@ -316,39 +325,51 @@ public class TheMostWindow {
 		labels[counter] = new JLabel(server.getIpAdress().toString());
 		labels[counter].setBounds(30, forLableIPDistance2, 101, 14);
 		//
+		nameForStatusServer1[counter] = new JLabel(resources.get("nameOfServ", "name1"));
+		nameForStatusServer1[counter].setBounds(140, forLableIPDistance2, 50, 14);
+		nameForStatusServer2[counter] = new JLabel(resources.get("nameOfServ", "name2"));
+		nameForStatusServer2[counter].setBounds(140, ForCheckboxDistance2, 50, 23);
+		statusServer1[counter] = new JLabel("");
+		statusServer1[counter].setBounds(190,  forLableIPDistance2, 97, 14);
+		statusServer2[counter] = new JLabel("");
+		statusServer2[counter].setBounds(190,  ForCheckboxDistance2, 97, 23);
 
 		variables1[counter] = new JLabel("");
-		variables1[counter].setBounds(280, forVariable1Distance2, 450, 12);
+		variables1[counter].setBounds(290, forVariable1Distance2, 450, 12);
 		frame.getContentPane().add(variables1[counter]);
 		//
 		variables2[counter] = new JLabel("");
-		variables2[counter].setBounds(280, forVariable2Distance2, 450, 12);
+		variables2[counter].setBounds(290, forVariable2Distance2, 450, 12);
 		frame.getContentPane().add(variables2[counter]);
 		//
 		variables3[counter] = new JLabel("");
-		variables3[counter].setBounds(280, forVariable3Distance2, 450, 12);
+		variables3[counter].setBounds(290, forVariable3Distance2, 450, 12);
 		frame.getContentPane().add(variables3[counter]);
 		//
 		variables4[counter] = new JLabel("");
-		variables4[counter].setBounds(280, forVariable4Distance2, 450, 12);
+		variables4[counter].setBounds(290, forVariable4Distance2, 450, 12);
 		frame.getContentPane().add(variables4[counter]);
 		//
 		variables5[counter] = new JLabel("");
-		variables5[counter].setBounds(280, forVariable5Distance2, 450, 12);
+		variables5[counter].setBounds(290, forVariable5Distance2, 450, 12);
 		frame.getContentPane().add(variables5[counter]);
 		//
 
 		frame.getContentPane().add(CheckBoxes[counter]);
 		//
 		frame.getContentPane().add(labels[counter]);
+		frame.getContentPane().add(statusServer1[counter]);
+		frame.getContentPane().add(statusServer2[counter]);
+		frame.getContentPane().add(nameForStatusServer1[counter]);
+		frame.getContentPane().add(nameForStatusServer2[counter]);
 
 		//
 		lblconnecton[counter] = new JLabel("connecton...");
 		lblconnecton[counter].setBounds(30, forConnectionDistance2, 131, 14);
 		lblconnecton[counter].setForeground(Color.BLUE);
 		//
-		typeOfprompts[counter] = new JLabel("loading...!");
-		typeOfprompts[counter].setBounds(150, forTypeOfPromptsDistance2, 131, 14);
+		typeOfprompts[counter] = new JLabel("loading...");
+		typeOfprompts[counter].setBounds(140, forTypeOfPromptsDistance2, 131, 14);
 		//
 		frame.getContentPane().add(lblconnecton[counter]);
 		frame.getContentPane().add(typeOfprompts[counter]);
@@ -371,7 +392,26 @@ public class TheMostWindow {
 					edit = new Editor(mainProgramFolder + "\\" + server.getServerName().toString(), resources,
 							server.getIpAdress().toString());
 					typeOfprompts[counter].setText(edit.compareFiles().toString());
+					
+					
+//
+					servStatus = new RestartingServ(listOfServers.get(counter), resources.get("auth", "Username"),resources.get("auth", "Password"), mainProgramFolder, resources);
 
+					statusServer1[counter].setText(servStatus.status().toString());
+					if (statusServer1[counter].getText().toString().equals("STOPPED")) {
+						statusServer1[counter].setForeground(new Color(255, 84, 84));	
+						
+						}else statusServer1[counter].setForeground(new Color(26, 142, 11));
+					
+					
+					
+					servStatus2 = new RestartingServ(listOfServers.get(counter), resources.get("auth", "Username"),resources.get("auth", "Password"), mainProgramFolder, resources);
+					statusServer2[counter].setText(servStatus2.status2().toString());
+					if (statusServer2[counter].getText().toString().equals("STOPPED")) {
+						statusServer2[counter].setForeground(new Color(255, 84, 84));	
+						
+						}else statusServer2[counter].setForeground(new Color(26, 142, 11));
+					
 					//
 
 					variables1[counter]

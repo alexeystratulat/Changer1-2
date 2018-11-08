@@ -58,6 +58,10 @@ System.out.println(resources.get("automated", "variable3"));
 				line = line.replaceAll(resources.get("check", "mistake1"), resources.get("automated", "variable1"));
 				line = line.replaceAll(resources.get("check", "mistake2"), resources.get("automated", "variable2"));
 				line = line.replaceAll(resources.get("check", "mistake3"), resources.get("automated", "variable3"));
+				line = line.replaceAll(resources.get("check", "mistake4"), resources.get("automated", "variable2"));
+				
+				
+				//System.out.println(resources.get("check", "mistake4") );
 				
 
 				writer.println(line);
